@@ -1,0 +1,37 @@
+defaults:
+  - gpt
+  - debate_prompts: tsinghua_ma_debate
+
+_target_: debatellm.systems.MultiAgentDebateTsinghua
+max_num_rounds: 3
+judge_name: "Judge"
+# The debating agents are defined below. One can add and remove agents and
+# change each agent's setup individually, e.g. the gpt prompt and engine used.
+
+agreement_intensity: -1 # -1: fallback to default prompt. [0, 1, ..., 10]: agreement intensity.
+
+agents: # options: [gpt, palm]
+  # Agent 1
+  - - "${system.gpt}"
+    - engine: "gpt-3.5-turbo-0613" # gpt uses gpt-3.5 engine
+    - prompt: "${system.agent_prompts.angel}"
+    - prompt_from_history: "tsinghua_mad"
+    - few_shot_examples: None # None, ${system.medpalm_examples.few_shot} or ${system.medpalm_examples.cot_few_shot}
+
+  # Agent 2
+  - - "${system.gpt}"
+    - engine: "gpt-3.5-turbo-0613" # gpt uses gpt-3.5 engine
+    - prompt: "${system.agent_prompts.devil}"
+    - prompt_from_history: "tsinghua_mad"
+    - few_shot_examples: None # None, ${system.medpalm_examples.few_shot} or ${system.medpalm_examples.cot_few_shot}
+
+  # Judge
+  - - "${system.gpt}"
+    - engine: "gpt-3.5-turbo-0613" # gpt uses gpt-3.5 engine
+    - prompt: "${system.agent_prompts.judge_tsinghua}"
+    - prompt_from_history: "tsinghua_judge"
+    - few_shot_examples: None # None, ${system.medpalm_examples.few_shot} or ${system.medpalm_examples.cot_few_shot}
+    - sampling:
+        max_tokens: 1000
+        temperature: 0.5 # This makes the judge more deterministic than the agents.
+        top_p: 0.5

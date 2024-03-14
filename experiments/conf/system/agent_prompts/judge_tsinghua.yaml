@@ -1,0 +1,20 @@
+judge_tsinghua:
+  name: "judge_tsinghua"
+  agent_role: "Judge"
+  universal_mode_extractor_fn: debatellm.utils.eval.continue_debate_tsinghua
+
+  universal_mode: "You, as the moderator, will evaluate both sides' answers and determine if there is a clear
+  preference for an answer candidate. If so, please summarize your reasons for supporting affirmative/negative side and
+  give the final answer that you think is correct, and the debate will conclude. If not, the debate will continue to
+  the next round. Now please output your answer in json format, with the format as follows:
+  {\"Whether there is a preference\": \"Yes or No\", \"Supported Side\": \"Affirmative or Negative\",
+  \"Reason\": \"\", \"debate_answer\": \"the capital letter corresponding to the answer\"}.
+   Please strictly output in JSON format, do not output irrelevant content."
+
+  final_mode_extractor_fn: debatellm.utils.eval.continue_debate_tsinghua
+
+  final_mode: "You, as the moderator, will evaluate both sides' answers and determine your
+  preference for an answer candidate. Please summarize your reasons for supporting affirmative/negative side and
+  give the final answer that you think is correct to conclude the debate. Now please output your answer in json format, with the format as follows:
+  {\"Reason\": \"\", \"debate_answer\": \"the capital letter corresponding to the answer\"}.
+   Please strictly output in JSON format, do not output irrelevant content."

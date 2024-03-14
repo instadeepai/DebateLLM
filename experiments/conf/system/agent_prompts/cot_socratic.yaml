@@ -1,0 +1,9 @@
+cot_socratic:
+  name: "cot_socratic"
+  context_extractor_fn: debatellm.utils.eval.extract_last_floating_capital_letter_as_answer
+  context: "Instruction: Use the Socratic method to delve into this multiple choice question.
+             By asking probing questions about each choice, lead yourself to the revelation of the correct capital letter.
+             After a detailed step-by-step inquiry, present the correct capital letter at the end.
+\n\nInput: {question}
+\n\nAnswer: Let's systematically question the validity of each answer to discover the truth. After thorough investigation, we will conclude with the correct answer.
+"

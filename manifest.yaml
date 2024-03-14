@@ -1,0 +1,39 @@
+# yaml-language-server: $schema=https://instadeep.aichor.ai/schema/latest/manifest.schema.json
+
+kind: AIchorManifest
+apiVersion: 0.2.0
+
+builder:
+  image: debatellm
+  dockerfile: ./docker/Dockerfile
+  context: .
+  buildArgs:
+    USE_CUDA: "false"
+
+
+spec:
+  operator: tf
+  image: debatellm
+  command: python scripts/launch_experiments.py
+  tensorboard:
+    enabled: false
+
+  types:
+    Worker:
+      count: 1
+
+      resources:
+        # 10-15 cpus for single process
+        # should be >= num_eval_workers
+        cpus: 6
+        # mandatory (must be >= 2): RAM ratio wanted (in GB)
+        # memory = cpus * ramRatio
+        ramRatio: 2
+        # Note: if calling APIs we should not be using GPU
+        # accelerators:
+        #   gpu:
+        #     count: 1
+        #     # mandatory (if gpus amount is > 0): gpu type wanted
+        #     type: gpu
+
+        #     product: A100-SXM4-80GB

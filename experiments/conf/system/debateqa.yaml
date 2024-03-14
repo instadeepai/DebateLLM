@@ -1,0 +1,24 @@
+defaults:
+  - gpt # options: [gpt, palm]: any agent used in the agent_list needs to be defined here.
+  - palm
+  - debate_prompts: simple
+
+_target_: debatellm.systems.RoundRobinDebateQA
+num_rounds: 2
+
+# The debating agents are defined below. One can add and remove agents and
+# change each agent's setup individually, e.g. the gpt prompt and engine used.
+agents: # options: [gpt, palm]
+  # GPT-4 agent
+  # - - "${system.gpt}"
+  #   - engine: "gpt-4" # gpt uses gpt-4 engine
+  #   - prompt: "${system.agent_prompts.cot}"
+
+  # GPT-3.5 agent
+  - - "${system.gpt}"
+    - engine: "gpt-3.5-turbo-0613" # gpt uses gpt-3.5 engine
+    - prompt: "${system.agent_prompts.cot}"
+
+  # PaLM agent
+  - - "${system.palm}" # palm uses default setup
+    - prompt: "${system.agent_prompts.cot}"

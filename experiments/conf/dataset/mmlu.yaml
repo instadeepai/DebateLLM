@@ -1,0 +1,6 @@
+eval_dataset: "mmlu"
+path_to_exams: "data/datasets/${.eval_dataset}/"
+dataset_settings:
+  exam_type: "test" # options: [dev, test, val]
+  medical_tasks_only: True
+  task_subsets: None # options: [None, high_school_maths]

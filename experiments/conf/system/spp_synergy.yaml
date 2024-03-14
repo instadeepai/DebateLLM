@@ -1,0 +1,14 @@
+defaults:
+  - gpt
+  - palm
+
+_target_: debatellm.systems.SingleAgentQA
+name: spp_synergy # Used for distinguishing between single agent GPT.
+
+# The debating agents are defined below. One can add and remove agents and
+# change each agent's setup individually, e.g. the gpt prompt and engine used.
+agents: # options: [gpt, palm]
+  # Agent 1
+  - - "${system.gpt}"
+    - engine: "gpt-4" # gpt uses gpt-3.5 engine
+    - prompt: "${system.agent_prompts.spp_original}" # options: [spp_expert, spp_original]

@@ -1,0 +1,5 @@
+# Description:
+#   - This is a simple debate prompt that is used for the system.
+name: "medprompt"
+
+system: "You are a helpful assistant that answers multiple choice questions about medical knowledge."

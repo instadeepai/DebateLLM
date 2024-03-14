@@ -1,0 +1,5 @@
+eval_dataset: "cosmosqa"
+path_to_exams: "data/datasets/${.eval_dataset}/"
+dataset_settings:
+  exam_type: "validation" # options: [train, validation]
+  medical_tasks_only: True

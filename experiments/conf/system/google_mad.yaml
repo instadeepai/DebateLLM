@@ -1,0 +1,30 @@
+defaults:
+  - gpt
+  - debate_prompts: google_ma_debate
+
+_target_: debatellm.systems.MultiAgentDebateGoogle
+num_rounds: 2
+summarize_answers: False # If True, summarize answers from all agents
+# and provide the summary to each agent.
+answer_aggregation: "most_frequent"
+agreement_intensity: -1 # -1 for default behavior, otherwise {0, ..., 10} for agreement intensity
+# The debating agents are defined below. One can add and remove agents and
+# change each agent's setup individually, e.g. the gpt prompt and engine used.
+agents: # options: [gpt, palm]
+  # GPT-3.5 agent
+  - - "${system.gpt}"
+    - engine: "gpt-4" # gpt uses gpt-3.5 engine
+    - prompt: "${system.agent_prompts.simple}"
+    - few_shot_examples: ${system.medpalm_examples.few_shot} # None, ${system.medpalm_examples.few_shot} or ${system.medpalm_examples.cot_few_shot}
+
+  # GPT-3.5 agent
+  - - "${system.gpt}"
+    - engine: "gpt-4" # gpt uses gpt-3.5 engine
+    - prompt: "${system.agent_prompts.simple}"
+    - few_shot_examples: ${system.medpalm_examples.few_shot} # None, ${system.medpalm_examples.few_shot} or ${system.medpalm_examples.cot_few_shot}
+
+  # GPT-3.5 agent
+  - - "${system.gpt}"
+    - engine: "gpt-4" # gpt uses gpt-3.5 engine
+    - prompt: "${system.agent_prompts.simple}"
+    - few_shot_examples: ${system.medpalm_examples.few_shot} # None, ${system.medpalm_examples.few_shot} or ${system.medpalm_examples.cot_few_shot}

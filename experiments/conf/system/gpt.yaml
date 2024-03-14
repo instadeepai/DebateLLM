@@ -1,0 +1,28 @@
+defaults: # options: [simple, cot, letter, explain...]: any prompt used in 'agent_prompts.prompt' needs to be defined here.
+  - agent_prompts/simple
+  - agent_prompts/cot
+  - agent_prompts/er_cot
+  - agent_prompts/er_simple
+  - agent_prompts/judge_tsinghua
+  - agent_prompts/judge_spp
+  - agent_prompts/angel
+  - agent_prompts/devil
+  - agent_prompts/spp_expert
+  - agent_prompts/spp_original
+  - agent_prompts/summarizer
+  - agent_prompts/cot_medprompt
+  - medpalm_examples/few_shot
+  - medpalm_examples/cot_few_shot
+
+gpt:
+  _target_: debatellm.agents.GPT
+  prompt: ${system.agent_prompts.simple}
+  engine: "gpt-3.5-turbo-0613"
+  few_shot_examples: False # Options include: [False, ${system.medpalm_examples.few_shot}, ${system.medpalm_examples.cot_few_shot}]
+  mock: False
+  sampling:
+    max_tokens: 1000
+    temperature: 0.5 # Taken from here: https://community.openai.com/t/cheat-sheet-mastering-temperature-and-top-p-in-chatgpt-api-a-few-tips-and-tricks-on-controlling-the-creativity-deterministic-output-of-prompt-responses/172683
+    top_p: 0.5
+  cost_per_prompt_token: 0.001 # 0.03  # dollar costs per 1000 prompt token
+  cost_per_response_token:  0.002 # 0.06  # dollar costs per 1000 response token

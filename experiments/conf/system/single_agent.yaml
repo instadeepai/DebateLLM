@@ -1,0 +1,20 @@
+defaults:
+  - gpt
+  - palm
+
+_target_: debatellm.systems.SingleAgentQA
+name: single_agent # Used for distinguishing between spp_synergy.
+
+# The single agent is defined below. Only one may be used. One can update the
+# agent's default setup here, e.g. the gpt prompt and engine used.
+agents: # options: [gpt, palm]
+
+  # GPT-3.5 agent
+  # - - "${system.gpt}"
+  #   - engine: "gpt-3.5-turbo-0613" # gpt uses gpt-3.5 engine
+  #   - prompt: "${system.agent_prompts.simple}"
+
+  # PaLM agent
+  - - "${system.palm}" # palm uses default setup
+    - prompt: "${system.agent_prompts.simple}"
+    - engine: "text-bison@001"

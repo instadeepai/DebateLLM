@@ -1,0 +1,24 @@
+defaults:
+  - gpt
+  - debate_prompts: chateval_ma_debate
+
+_target_: debatellm.systems.ChatEvalDebate
+num_rounds: 3
+debate_setting: "one_by_one" # options: [one_by_one, simultaneous_talk, simultaneous_talk_with_summarizer]
+summarizer_name: "Summarizer"
+agreement_intensity: -1 # -1 for default behavior, otherwise {0, ..., 10} for agreement intensity
+# The debating agents are defined below. One can add and remove agents and
+# change each agent's setup individually, e.g. the gpt prompt and engine used.
+agents: # options: [gpt, palm]
+  # Agent 1
+  - - "${system.gpt}"
+    - engine: "gpt-4" # gpt uses gpt-3.5 engine
+    - prompt: "${system.agent_prompts.cot}"
+  # Agent 2
+  - - "${system.gpt}"
+    - engine: "gpt-4" # gpt uses gpt-3.5 engine
+    - prompt: "${system.agent_prompts.cot}"
+  # Summarizer
+  - - "${system.gpt}"
+    - engine: "gpt-4" # gpt uses gpt-3.5 engine
+    - prompt: "${system.agent_prompts.summarizer}"

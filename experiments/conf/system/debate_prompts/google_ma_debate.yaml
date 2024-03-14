@@ -1,0 +1,31 @@
+# Description:
+#   - This is a simple debate prompt that is used for the system.
+name: "google_ma_debate"
+prefix_seperator: "\n\n These are the solutions to the problem from other agents: "
+summary_prefix_seperator: "\n\n These are the main points discussed so far: "
+suffix_seperator: "\n\n Use these opinions carefully as additional advice, can you provide an updated answer? Make sure to state
+your answer (capital multiple choice letter) at the end of the response."
+summary_suffix_seperator: "\n\n Use the responses of the experts and carefully provide a summary of the important points discussed so far."
+agent_response: "\n\n One agent's solution: ```{}```"
+
+suffix_seperator_0: "\n\n You discard these agents' opinions 100% of the time. Can you provide an updated answer? Make sure to state
+your answer (capital multiple choice letter) at the end of the response."
+suffix_seperator_1: "\n\n You discard these agents' opinions 90% of the time. Can you provide an updated answer? Make sure to state
+your answer (capital multiple choice letter) at the end of the response."
+suffix_seperator_2: "\n\n You discard these agents' opinions 80% of the time. Can you provide an updated answer? Make sure to state
+your answer (capital multiple choice letter) at the end of the response."
+suffix_seperator_3: "\n\n You discard these agents' opinions 70% of the time. Using these opinions as additional advice, can you provide an updated answer? Make sure to state
+your answer (capital multiple choice letter) at the end of the response."
+suffix_seperator_4: "\n\n You discard these agents' opinions 60% of the time. Using these opinions as additional advice, can you provide an updated answer? Make sure to state
+your answer (capital multiple choice letter) at the end of the response."
+suffix_seperator_5: "\n\n You agree or disagree with these agents depending on their answers. Using these opinions carefully as additional advice, can you provide an updated answer? Make sure to state
+your answer (capital multiple choice letter) at the end of the response."
+suffix_seperator_6: "\n\n You incorporate these agents' opinions 60% of the time but might have reservations. Using these opinions as additional advice, can you provide an updated answer?
+ Make sure to state your answer (capital multiple choice letter) at the end of the response."
+suffix_seperator_7: "\n\n You incorporate these agents' opinions 70% of the time, barring significant issues. Using these opinions as additional advice, can you provide an updated answer? Make sure to state your answer (capital multiple choice letter) at the end of the response."
+suffix_seperator_8: "\n\n You incorporate these agents' opinions 80% of the time and rarely find issues with them. Using these opinions as additional advice, can you provide an
+updated answer? Make sure to state your answer (capital multiple choice letter) at the end of the response."
+suffix_seperator_9: "\n\n You incorporate these agents' opinions 90% of the time and have almost no reservations.
+Using these opinions as additional advice, can you provide an updated answer? Make sure to state your answer (capital multiple choice letter) at the end of the response."
+suffix_seperator_10: "\n\n You fully incorporate these agents' opinions 100% of the time, without reservations. Using these opinions as
+additional advice, can you provide an updated answer? Make sure to state your answer (capital multiple choice letter) at the end of the response."
