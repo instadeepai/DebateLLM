@@ -1,0 +1,9 @@
+# Description:
+#   - This is a simple debate prompt that is used for the system.
+name: "er_debate"
+
+reasoning_step_message: "The following are multiple choice questions (with answers) about medical knowledge."
+
+aggregation_step_message: "The following are multiple choice questions (with answers) about medical knowledge. We
+provide several student reasonings for the last question. Some of them may be correct and some incorrect. You can use the
+best correct arguments from these reasonings. Beware of wrong reasoning and do not repeat wrong reasoning."

@@ -1,0 +1,11 @@
+# Description:
+#   - This is a simple debate prompt that is used for the system.
+name: "er_debate_cot"
+
+reasoning_step_message: "Instruction: The following are multiple choice questions about medical knowledge. Solve them in a step-by-step fashion,
+starting by summarizing the available information. Output a single option from the four options as the final answer."
+
+aggregation_step_message: "The following are multiple choice questions about medical knowledge. Solve them in a step-by-step fashion,
+starting by summarizing the available information. Output a single option from the four options as the final answer. We
+provide several student reasonings for the last question. Some of them may be correct and some incorrect. You can use the
+best correct arguments from these reasonings. Beware of wrong reasoning and do not repeat wrong reasoning."

@@ -1,0 +1,9 @@
+cot_alter:
+  name: "cot_alter"
+  context_extractor_fn: debatellm.utils.eval.extract_last_floating_capital_letter_as_answer
+  context: "Instruction: Engage in a collaborative analysis to solve this multiple choice question.
+             Consider different perspectives and counterarguments to each option.
+             Deliberate step by step and conclude your analysis with the correct capital letter.
+\n\nInput: {question}
+\n\nAnswer: Let's explore each option together and weigh their merits step by step, culminating in the identification of the correct answer.
+"

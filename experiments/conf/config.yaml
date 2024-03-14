@@ -1,0 +1,12 @@
+defaults:
+  - system: single_agent # [options: single_agent, debateqa, google_mad, ensemble_refinement,
+                                #    tsinghua_mad, spp_synergy, chateval, medprompt]
+  - dataset: medqa # [options: usmle, medmcqa, mmlu, pubmedqa, medqa, ciar, cosmosqa, gpqa]
+  - _self_
+
+max_eval_count: None
+num_eval_workers: 1 # Each worker receives a full batch of questions.
+eval_batch_size: 10 # Defaults to batch_size=1.
+verbose: False
+seed: 42
+save_question_answer_mode: True

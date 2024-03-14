@@ -1,0 +1,261 @@
+cot_few_shot:
+    medqa:
+        input_text:
+            - "\n\nQuestion: A 22-year-old male marathon runner presents to the office with the complaint of right-sided rib pain when he runs
+                long distances. Physical examination reveals normal heart and lung findings and an exhalation dysfunction at ribs 4-5 on the
+                right. Which of the following muscles or muscle groups will be most useful in correcting this dysfunction utilizing a direct
+                method?\n
+                A: anterior scalene\n
+                B: latissimus dorsi\n
+                C: pectoralis minor\n
+                D: quadratus lumborum"
+            - "\n\nQuestion: A 36-year-old male presents to the office with a 3-week history of low back pain. He denies any recent trauma but
+                says that he climbs in and out of his truck numerous times a day for his job. Examination of the patient in the prone position
+                reveals a deep sacral sulcus on the left, a posterior inferior lateral angle on the right, and a lumbosacral junction that springs
+                freely on compression. The most likely diagnosis is\n
+                A: left-on-left sacral torsion\n
+                B: left-on-right sacral torsion\n
+                C: right unilateral sacral flexion\n
+                D: right-on-right sacral torsion"
+            - "\n\nQuestion: A 44-year-old man comes to the office because of a 3-day history of sore throat, nonproductive cough, runny nose,
+                and frontal headache. He says the headache is worse in the morning and ibuprofen does provide some relief. He has not had
+                shortness of breath. Medical history is unremarkable. He takes no medications other than the ibuprofen for pain. Vital signs
+                are temperature 37.4°C (99.4°F), pulse 88/min, respirations 18/min, and blood pressure 120/84 mm Hg. Examination of the
+                nares shows erythematous mucous membranes. Examination of the throat shows erythema and follicular lymphoid hyperplasia
+                on the posterior oropharynx. There is no palpable cervical adenopathy. Lungs are clear to auscultation. Which of the following
+                is the most likely cause of this patient’s symptoms?\n
+                A: Allergic rhinitis\n
+                B: Epstein-Barr virus\n
+                C: Mycoplasma pneumonia\n
+                D: Rhinovirus"
+            - "\n\nQuestion: A previously healthy 32-year-old woman comes to the physician 8 months after her husband was killed in a car
+                crash. Since that time, she has had a decreased appetite and difficulty falling asleep. She states that she is often sad and
+                cries frequently. She has been rechecking the door lock five times before leaving her house and has to count exactly five
+                pieces of toilet paper before she uses it. She says that she has always been a perfectionist but these urges and rituals are new.
+                Pharmacotherapy should be targeted to which of the following neurotransmitters?\n
+                A: Dopamine\n
+                B: Glutamate\n
+                C: Norepinephrine\n
+                D: Serotonin"
+            - "\n\nQuestion: A 42-year-old man comes to the office for preoperative evaluation prior to undergoing adrenalectomy scheduled
+                in 2 weeks. One month ago, he received care in the emergency department for pain over his right flank following a motor
+                vehicle collision. At that time, blood pressure was 160/100 mm Hg and CT scan of the abdomen showed an incidental 10-cm
+                left adrenal mass. Results of laboratory studies, including complete blood count, serum electrolyte concentrations, and liver
+                function tests, were within the reference ranges. The patient otherwise had been healthy and had never been told that he
+                had elevated blood pressure. He takes no medications. A follow-up visit in the office 2 weeks ago disclosed elevated urinary
+                normetanephrine and metanephrine and plasma aldosterone concentrations. The patient was referred to a surgeon, who
+                recommended the adrenalectomy. Today, vital signs are temperature 36.6°C (97.9°F), pulse 100/min, respirations 14/min, and
+                blood pressure 170/95 mm Hg. Physical examination discloses no significant findings. Initial preoperative preparation should
+                include treatment with which of the following?\n
+                A:  Labetalol\n
+                B:  A loading dose of potassium chloride\n
+                C: Nifedipine\n
+                D: Phenoxybenzamine"
+        output_text:
+            - "\n\nExplanation: Let’s solve this step-by-step, referring to authoritative sources as needed. Among the options, only pectoralis
+                minor muscle origins from the outer surfaces of the 3rd to 5th ribs.
+                \n\nAnswer: C"
+            - "\n\nExplanation: Let’s solve this step-by-step, referring to authoritative sources as needed. The deep sulcus on the left, a
+                posterior ILA on the right, with a negative spring test suggests a right-on-right sacral torsion. All other options have a deep
+                sulcus on the right.
+                \n\nAnswer: D"
+            - "\n\nExplanation: Let’s solve this step-by-step, referring to authoritative sources as needed. The symptoms, especially the
+                headache, suggest that the most likely cause is Rhinovirus. Epstein-Barr virus will cause swollen lymph nodes but there is no
+                palpable cervical adenopathy. Lungs are clear to auscultation suggests it’s not Mycoplasma pneumonia.
+                \n\nAnswer: D"
+            - "\n\nExplanation: Let’s solve this step-by-step, referring to authoritative sources as needed. The patient feels sad and among the
+                options, only Dopamine and Serotonin can help increase positive emotions. Serotonin also affects digestion and metabolism,
+                which can help the patient’s decreased appetite and sleep difficulty.
+                \n\nAnswer: D"
+            - "\n\nExplanation: Let’s solve this step-by-step, referring to authoritative sources as needed. The symptoms and the adrenal mass
+                suggested pheochromocytoma, and the blood pressure indicates hypertension. Phenoxybenzamine is used to treat hypertension
+                cxaused by pheochromocytoma.
+                \n\nAnswer: D"
+    mmlu:
+        input_text:
+            - "\n\nQuestion: The energy for all forms of muscle contraction is provided by:\n
+                (A) ATP.\n
+                (B) ADP.\n
+                (C) phosphocreatine.\n
+                (D) oxidative phosphorylation."
+            - "\n\nQuestion: Which of the following conditions does not show multifactorial inheritance?\n
+                (A) Pyloric stenosis\n
+                (B) Schizophrenia\n
+                (C) Spina bifida (neural tube defects)\n
+                (D) Marfan syndrome"
+            - "\n\nQuestion: What is the embryological origin of the hyoid bone?\n
+                (A) The first pharyngeal arch\n
+                (B) The first and second pharyngeal arches\n
+                (C) The second pharyngeal arch\n
+                (D) The second and third pharyngeal arches"
+            - "\n\nQuestion: In a given population, 1 out of every 400 people has a cancer caused by a completely recessive allele, b. Assuming
+                the population is in Hardy-Weinberg equilibrium, which of the following is the expected proportion of individuals who carry
+                the b allele but are not expected to develop the cancer?\n
+                (A) 1/400\n
+                (B) 19/400\n
+                (C) 20/400\n
+                (D) 38/400"
+            - "\n\nQuestion: A high school science teacher fills a 1 liter bottle with pure nitrogen and seals the lid. The pressure is 1.70 atm,
+                and the room temperature is 25◦C. Which two variables will both increase the pressure of the system, if all other variables are
+                held constant?\n
+                (A) Decreasing volume, decreasing temperature\n
+                (B) Increasing temperature, increasing volume\n
+                (C) Increasing temperature, increasing moles of gas\n
+                (D) Decreasing moles of gas, increasing volume"
+            - "\n\nQuestion: A 22-year-old male marathon runner presents to the office with the complaint of right-sided rib pain when he runs
+                long distances. Physical examination reveals normal heart and lung findings and an exhalation dysfunction at ribs 4-5 on the
+                right. Which of the following muscles or muscle groups will be most useful in correcting this dysfunction utilizing a direct
+                method?\n
+                (A) anterior scalene\n
+                (B) latissimus dorsi\n
+                (C) pectoralis minor\n
+                (D) quadratus lumborum"
+        output_text:
+            - "\n\nExplanation: The sole fuel for muscle contraction is adenosine triphosphate (ATP). During near maximal intense exercise
+                the muscle store of ATP will be depleted in less than one second. Therefore, to maintain normal contractile function ATP
+                must be continually resynthesized. These pathways include phosphocreatine and muscle glycogen breakdown, thus enabling
+                substrate-level phosphorylation (‘anaerobic’) and oxidative phosphorylation by using reducing equivalents from carbohydrate
+                and fat metabolism (‘aerobic’).
+                \n\nAnswer: (A)"
+            - "\n\nExplanation: Multifactorial inheritance refers to when a condition is caused by multiple factors, which may be both genetic
+                or environmental. Marfan is an autosomal dominant trait. It is caused by mutations in the FBN1 gene, which encodes a
+                protein called fibrillin-1. Hence, Marfan syndrome is not an example of multifactorial inheritance.
+                \n\nAnswer: (D)"
+            - "\n\nExplanation: In embryology, the pharyngeal arches give rise to anatomical structure in the head and neck. The hyoid bone,
+                a small bone in the midline of the neck anteriorly, is derived from the second and third pharyngeal arches.
+                \n\nAnswer: (D)"
+            - "\n\nExplanation: The expected proportion of individuals who carry the b allele but are not expected to develop the cancer
+                equals to the frequency of heterozygous allele in the given population. According to the Hardy-Weinberg equation p∧2 +
+                2pq + q∧2 = 1, where p is the frequency of dominant allele frequency, q is the frequency of recessive allele frequency, p∧2 is
+                the frequency of the homozygous dominant allele, q∧2 is the frequency of the recessive allele, and 2pq is the frequency of
+                the heterozygous allele. Given that q∧2=1/400, hence, q=0.05 and p=1-q=0.95. The frequency of the heterozygous allele is
+                2pq=2*0.05*0.95=38/400.
+                \n\nAnswer: (D)"
+            - "\n\nExplanation: According to the ideal gas law, PV = nRT (P = pressure, V = volume, n = number of moles, R = gas constant,
+                T = temperature). Hence, increasing both temperature (T) and moles of gas (n), while other variables stay constant, will
+                indeed increase the pressure of the system.
+                \n\nAnswer: (C)"
+            - "\n\nExplanation: All of the muscles have an insertion on the rib cage; however only one has an insertion at ribs 4-5 and could be
+                responsible for right-sided rib pain: pectoralis minor. Pectoralis minor inserts to the costal cartilage of the anterior third to
+                fifth ribs.
+                \n\nAnswer: (C)"
+    pubmedqa:
+        input_text:
+            - "\n\nContext: To describe the interstitial fluid (ISF) and plasma pharmacokinetics of meropenem in patients on continuous
+                venovenous haemodiafiltration (CVVHDF). This was a prospective observational pharmacokinetic study. Meropenem (500 mg)
+                was administered every 8 h. CVVHDF was targeted as a 2-3 L/h exchange using a polyacrylonitrile filter with a surface area
+                of 1.05 m2 and a blood flow rate of 200 mL/min. Serial blood (pre- and post-filter), filtrate/dialysate and ISF concentrations
+                were measured on 2 days of treatment (Profiles A and B). Subcutaneous tissue ISF concentrations were determined using
+                microdialysis. A total of 384 samples were collected. During Profile A, the comparative median (IQR) ISF and plasma peak
+                concentrations were 13.6 (12.0-16.8) and 40.7 (36.6-45.6) mg/L and the trough concentrations were 2.6 (2.4-3.4) and 4.9
+                (3.5-5.0) mg/L, respectively. During Profile B, the ISF trough concentrations increased by ∼40%. Meropenem ISF penetration
+                was estimated at 63% (60%-69%) and 69% (65%-74%) for Profiles A and B, respectively, using comparative plasma and
+                ISF AUCs. For Profile A, the plasma elimination t1/2 was 3.7 (3.3-4.0) h, the volume of distribution was 0.35 (0.25-0.46)
+                L/kg, the total clearance was 4.1 (4.1-4.8) L/h and the CVVHDF clearance was 2.9 (2.7-3.1) L/h.
+                \n\nQuestion: Are interstitial fluid concentrations of meropenem equivalent to plasma concentrations in critically ill patients receiving continuous renal replacement therapy?\n
+                (A) Yes\n
+                (B) No \n
+                (C) Maybe"
+            - "\n\nContext: Family caregivers of dementia patients are at increased risk of developing depression or anxiety. A multi-component
+                program designed to mobilize support of family networks demonstrated effectiveness in decreasing depressive symptoms in
+                caregivers. However, the impact of an intervention consisting solely of family meetings on depression and anxiety has not yet
+                been evaluated. This study examines the preventive effects of family meetings for primary caregivers of community-dwelling
+                dementia patients. A randomized multicenter trial was conducted among 192 primary caregivers of community dwelling
+                dementia patients. Caregivers did not meet the diagnostic criteria for depressive or anxiety disorder at baseline. Participants
+                were randomized to the family meetings intervention (n=96) or usual care (n=96) condition. The intervention consisted of
+                two individual sessions and four family meetings which occurred once every 2 to 3 months for a year. Outcome measures
+                after 12 months were the incidence of a clinical depressive or anxiety disorder and change in depressive and anxiety symptoms
+                (primary outcomes), caregiver burden and quality of life (secondary outcomes). Intention-to-treat as well as per protocol
+                analyses were performed. A substantial number of caregivers (72/192) developed a depressive or anxiety disorder within 12
+                months. The intervention was not superior to usual care either in reducing the risk of disorder onset (adjusted IRR 0.98;
+                95% CI 0.69 to 1.38) or in reducing depressive (randomization-by-time interaction coefficient=-1.40; 95% CI -3.91 to 1.10)
+                or anxiety symptoms (randomization-by-time interaction coefficient = -0.55; 95% CI -1.59 to 0.49). The intervention did
+                not reduce caregiver burden or their health related quality of life.
+                \n\nQuestion: Does a family meetings intervention prevent depression and anxiety in family caregivers of dementia patient?\n
+                (A) Yes\n
+                (B) No \n
+                (C) Maybe"
+            - "\n\nContext: To compare adherence to follow-up recommendations for colposcopy or repeated Papanicolaou (Pap) smears for
+                women with previously abnormal Pap smear results. Retrospective cohort study. Three northern California family planning
+                clinics. All women with abnormal Pap smear results referred for initial colposcopy and a random sample of those referred
+                for repeated Pap smear. Medical records were located and reviewed for 90 of 107 women referred for colposcopy and 153
+                of 225 women referred for repeated Pap smears. Routine clinic protocols for follow-up–telephone call, letter, or certified
+                letter–were applied without regard to the type of abnormality seen on a Pap smear or recommended examination. Documented
+                adherence to follow-up within 8 months of an abnormal result. Attempts to contact the patients for follow-up, adherence to
+                follow-up recommendations, and patient characteristics were abstracted from medical records. The probability of adherence to
+                follow-up vs the number of follow-up attempts was modeled with survival analysis. Cox proportional hazards models were
+                used to examine multivariate relationships related to adherence. The rate of overall adherence to follow-up recommendations
+                was 56.0% (136/243). Adherence to a second colposcopy was not significantly different from that to a repeated Pap smear
+                (odds ratio, 1.40; 95% confidence interval, 0.80-2.46). The use of as many as 3 patient reminders substantially improved
+                adherence to follow-up. Women without insurance and women attending 1 of the 3 clinics were less likely to adhere to any
+                follow-up recommendation (hazard ratio for no insurance, 0.43 [95% confidence interval, 0.20-0.93], and for clinic, 0.35 [95%
+                confidence interval, 0.15-0.73]).
+                \n\nQuestion: Do follow-up recommendations for abnormal Papanicolaou smears influence patient adherence?\n
+                (A) Yes\n
+                (B) No \n
+                (C) Maybe"
+        output_text:
+            - "\n\nExplanation: This is the first known report of concurrent plasma and ISF concentrations of a meropenem antibiotic during
+                CVVHDF. We observed that the ISF concentrations of meropenem were significantly lower than the plasma concentrations,
+                although the present dose was appropriate for infections caused by intermediately susceptible pathogens (MIC<=4 mg/L).
+                \n\nAnswer: (B)"
+            - "\n\nExplanation: Multifactorial inheritance refers to when a condition is caused by multiple factors, which may be both genetic
+                or environmental. Marfan is an autosomal dominant trait. It is caused by mutations in the FBN1 gene, which encodes a
+                protein called fibrillin-1. Hence, Marfan syndrome is not an example of multifactorial inheritance.
+                \n\nAnswer: (B)"
+            - "\n\nExplanation: dherence to follow-up was low in this family planning clinic population, no matter what type of follow-up
+                was advised. Adherence was improved by the use of up to 3 reminders. Allocating resources to effective methods for improving
+                adherence to follow-up of abnormal results may be more important than which follow-up procedure is recommended.
+                \n\nAnswer: (B)"
+    medmcqa:
+        input_text:
+            - "\n\nQuestion: Maximum increase in prolactin level is caused by:\n
+                (A) Risperidone\n
+                (B) Clozapine\n
+                (C) Olanzapine\n
+                (D) Aripiprazole"
+            - "\n\nQuestion: What is the age of routine screening mammography?\n
+                (A) 20 years\n
+                (B) 30 years\n
+                (C) 40 years\n
+                (D) 50 years"
+            - "\n\nQuestion: A 65-year-old male complains of severe back pain and inability to move his left lower limb. Radiographic studies
+                demonstrate the compression of nerve elements at the intervertebral foramen between vertebrae L5 and S1. Which structure is
+                most likely responsible for this space-occupying lesion?
+                (A) Anulus fibrosus\n
+                (B) Nucleus pulposus\n
+                (C) Posterior longitudinal ligament\n
+                (D) Anterior longitudinal ligament"
+            - "\n\nQuestion: Neuroendocrine cells in the lungs are:
+                (A) Dendritic cells\n
+                (B) Type I pneumocytes\n
+                (C) Type II pneumocytes\n
+                (D) APUD cells"
+            - "\n\nQuestion: Presence of it indicates remote contamination of water
+                (A) Streptococci\n
+                (B) Staphalococci\n
+                (C) Clastridium pertringes\n
+                (D) Nibrio"
+        output_text:
+            - "\n\nExplanation: Let’s solve this step-by-step, referring to authoritative sources as needed. Clozapine generally does not raise
+                prolactin levels. Atypicals such as olanzapine and aripiprazole cause small if no elevation. Risperidone is known to result in a
+                sustained elevated prolactin level. Therefore risperidone is likely to cause the maximum increase in prolactin level.
+                \n\nAnswer: (A)"
+            - "\n\nExplanation: Let’s solve this step-by-step, referring to authoritative sources as needed. The age of routine screening depends
+                on the country you are interested in and varies widely. For the US, it is 40 years of age according to the American Cancer
+                Society. In Europe, it is typically closer to 50 years. For a patient based in the US, the best answer is 40 years.
+                \n\nAnswer: (C)"
+            - "\n\nExplanation: Let’s solve this step-by-step, referring to authoritative sources as needed. This man describes a herniated
+                invertebral disk through a tear in the surrounding annulus fibrosus. The soft, gelatinous 'nucleus pulposus' is forced out
+                through a weakened part of the disk, resulting in back pain and nerve root irritation. In this case, the impingement is resulting
+                in paralysis, and should be considered a medical emergency. Overall, the structure that is causing the compression and
+                symptoms is the nucleus pulposus.
+                \n\nAnswer: (B)"
+            - "\n\nExplanation: Let’s solve this step-by-step, referring to authoritative sources as needed. Neuroendocrine cells, which are also
+                known as Kultschitsky-type cells, Feyrter cells and APUD cells, are found in the basal layer of the surface epithelium and in
+                the bronchial glands.
+                \n\nAnswer: (D)"
+            - "\n\nExplanation: Let’s solve this step-by-step, referring to authoritative sources as needed. Because Clostridium perfringens
+                spores are both specific to sewage contamination and environmentally stable, they are considered as possible conservative
+                indicators of human fecal contamination and possible surrogates for environmentally stable pathogens.
+                \n\nAnswer: (C)"

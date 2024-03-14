@@ -1,0 +1,8 @@
+angel:
+  name: "angel"
+  agent_role: "Affirmative side"
+  context_extractor_fn: debatellm.utils.eval.extract_last_floating_capital_letter_as_answer
+  context_first_extractor_fn: debatellm.utils.eval.extract_last_floating_capital_letter_as_answer
+  context_first: "{question}
+            \n\nYou will now think step by step and provide a capital letter answer at the end of your response."
+  context: "Do you agree with my perspective? Please provide your reasons and answer."

@@ -1,0 +1,5 @@
+er_cot:
+  name: "er_cot"
+  context_extractor_fn: debatellm.utils.eval.extract_last_floating_capital_letter_as_answer
+  context: "\n\nQuestion: {question}
+          \n\nExplanation: Let’s solve this step-by-step, referring to authoritative sources as needed."

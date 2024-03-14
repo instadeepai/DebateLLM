@@ -1,0 +1,18 @@
+defaults:
+  - gpt
+  - debate_prompts: ma_debate
+
+_target_: debatellm.systems.MultiAgentDebate
+num_rounds: 2
+
+# The debating agents are defined below. One can add and remove agents and
+# change each agent's setup individually, e.g. the gpt prompt and engine used.
+agents: # options: [gpt, palm]
+  # GPT-3.5 agent
+  - - "${system.gpt}"
+    - engine: "gpt-4" # gpt uses gpt-3.5 engine
+    - prompt: "${system.agent_prompts.cot}"
+  # GPT-3.5 agent
+  - - "${system.gpt}"
+    - engine: "gpt-4" # gpt uses gpt-3.5 engine
+    - prompt: "${system.agent_prompts.cot}"

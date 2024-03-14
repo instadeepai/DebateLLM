@@ -1,0 +1,4 @@
+eval_dataset: "medmcqa"
+path_to_exams: "data/datasets/${.eval_dataset}/"
+dataset_settings:
+  exam_type: "dev" # options: [dev, train]

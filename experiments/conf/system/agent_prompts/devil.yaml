@@ -1,0 +1,17 @@
+devil:
+  name: "devil"
+  agent_role: "Negative side"
+  context_extractor_fn: debatellm.utils.eval.extract_last_floating_capital_letter_as_answer
+  context: "You disagree with my answer. Provide your answer and reasons, and the capital letter corresponding to your answer at the end of your response."
+
+  context_0: "You disagree with my answer 100% of the time. Provide your alternative answer, explain your reasons, and conclude with the capital letter corresponding to your answer at the end of your response."
+  context_1: "You disagree with my answer 90% of the time. Provide your alternative answer, elaborate on your reasoning, and conclude with the capital letter corresponding to your answer at the end of your response."
+  context_2: "You disagree with my answer 80% of the time. Provide your alternative answer if any, elucidate your reasons, and conclude with the capital letter corresponding to your answer at the end of your response."
+  context_3: "You disagree with my answer 70% of the time. Offer your alternative answer, specify your reasons, and conclude with the capital letter corresponding to your answer at the end of your response."
+  context_4: "You disagree with my answer 60% of the time. Offer your alternative answer if you have one, specify your reasons, and conclude with the capital letter corresponding to your answer at the end of your response."
+  context_5: "You neither agree nor disagree with my answer. If you have an alternative answer, provide it along with your reasons, and conclude with the capital letter corresponding to your answer at the end of your response."
+  context_6: "You agree with my answer 60% of the time but have occasional reservations. If you disagree, offer your alternative answer, clarify your reasons, and conclude with the capital letter corresponding to your answer at the end of your response."
+  context_7: "You agree with my answer 70% of the time but will dissent if you find a significant issue. Provide your alternative answer if any, elaborate on your reasons, and conclude with the capital letter corresponding to your answer at the end of your response."
+  context_8: "You agree with my answer 80% of the time and find issues very rarely. If you do disagree, state your alternative answer, outline your reasons, and conclude with the capital letter corresponding to your answer at the end of your response."
+  context_9: "You agree with my answer 90% of the time and have almost no reservations. Affirm your agreement, share any additional thoughts if you have them, and conclude with the capital letter corresponding to your answer at the end of your response."
+  context_10: "You find my answer to be spot-on 100% of the time and have no reservations whatsoever. Affirm your agreement, share any additional thoughts if you have them, and conclude with the capital letter corresponding to your answer at the end of your response."

@@ -1,0 +1,27 @@
+defaults:
+  - gpt
+  - palm
+  - debate_prompts: er_debate
+
+_target_: debatellm.systems.EnsembleRefinementDebate
+name: ensemble_refinement
+num_reasoning_steps: 3
+num_aggregation_steps: 1
+
+# The debating agents are defined below. One can add and remove agents and
+# change each agent's setup individually, e.g. the gpt prompt and engine used.
+# For this implementation the number of reasoning paths is the same as the
+# number of aggregators. This is to increase the amount of code reuse.
+agents: # options: [gpt, palm]
+  # GPT-3.5 agent
+  - - "${system.gpt}"
+    - engine: "gpt-4" # gpt uses gpt-3.5 engine
+    - prompt: "${system.agent_prompts.er_simple}"
+    - few_shot_examples: ${system.medpalm_examples.few_shot} # False, ${system.medpalm_examples.few_shot} or ${system.medpalm_examples.cot_few_shot}
+    - sampling:
+        temperature: 0.7  # This is decreased by 0.2 for the aggregation steps
+        top_p: 0.5
+  # PaLM agent
+  # - - "${system.palm}" # palm uses default setup
+  #   - prompt: "${system.agent_prompts.er_few_shot}"
+  #   - engine: "chat-bison@001"

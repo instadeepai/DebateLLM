@@ -1,0 +1,3 @@
+defaults:
+  - ensemble_refinement
+  - override debate_prompts: er_debate_cot

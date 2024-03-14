@@ -1,0 +1,21 @@
+defaults: # options: [simple, cot, letter, explain...]: any prompt used in 'agent_prompts.prompt' needs to be defined here.
+  - agent_prompts/simple
+  - agent_prompts/cot
+  - agent_prompts/er_cot
+  - agent_prompts/er_simple
+  - agent_prompts/spp_expert
+  - agent_prompts/spp_original
+
+palm:
+  _target_: debatellm.agents.PaLM
+  prompt: ${system.agent_prompts.simple}
+  engine: "chat-bison@001"  # "chat-bison@001" is the default engine, but "text-bison@001" is also supported for single agent settings
+  few_shot_examples: False # Options include: [False, ${system.medpalm_examples.few_shot}, ${system.medpalm_examples.cot_few_shot}]
+  mock: False
+  sampling:
+    temperature: 0.2
+    max_output_tokens: 1000
+    top_p: 0.95
+    top_k: 40
+  cost_per_prompt_token: 0.0005  # dollar costs per 1000 prompt token
+  cost_per_response_token: 0.0005  # dollar costs per 1000 response token

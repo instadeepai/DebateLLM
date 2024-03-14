@@ -1,0 +1,5 @@
+er_simple:
+  name: "er_simple"
+  context_extractor_fn: debatellm.utils.eval.extract_first_floating_capital_letter_as_answer
+  context: "\n\nQuestion: {question}
+            \n\nAnswer:"
