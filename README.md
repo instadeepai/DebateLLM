@@ -128,11 +128,11 @@ Please read our [contributing docs](docs/CONTRIBUTING.md) for details on how to 
 
 If you use DebateLLM in your work, please cite our paper:
 ```bibtex
-@article{smit2023benchmarking,
-  title={Are we going MAD? Benchmarking Multi-Agent Debate between Language Models for Medical Q&A},
-  author={Smit, Andries and Duckworth, Paul and Grinsztajn, Nathan and Tessera, Kale-ab and Barrett, Thomas D. and Pretorius, Arnu},
+@article{smit2024mad,
+  title={Should we be going MAD? A Look at Multi-Agent Debate Strategies for LLMs},
+  author={Smit, Andries and Duckworth, Paul and Grinsztajn, Nathan and Barrett, Thomas D. and Pretorius, Arnu},
   journal={arXiv preprint arXiv:2311.17371},
-  year={2023},
+  year={2024},
   url={https://arxiv.org/abs/2311.17371}
 }
 
