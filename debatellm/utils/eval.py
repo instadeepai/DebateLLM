@@ -24,7 +24,6 @@ def apply_config_overwrites(cfg: OmegaConf) -> DictConfig:
     cfg_dict: Dict[str, Any] = OmegaConf.to_container(cfg, resolve=True)  # type: ignore
 
     # Remove the system name from the config
-    # TODO: Can this be done in Hydra?
     if "_target_" not in cfg_dict["system"]:
         if "palm" in cfg_dict["system"]:
             cfg_dict["system"].update(cfg_dict["system"]["palm"])

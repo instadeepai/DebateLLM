@@ -66,8 +66,6 @@ def eval_on_batch(
                     )
                     break
                 except Exception as e:
-                    # TODO: This only works for single processes.
-                    # Get this to work for multiple processes.
                     tb = traceback.format_exc()
                     print("An error occurred:", e)
                     print("Traceback:", tb)
@@ -111,9 +109,6 @@ def evaluate(
     seed: int = 42,
 ) -> None:
     # Shuffle and select the questions.
-    # TODO: Turn this into a dataset object
-    # and add flexibility to allow for
-    # e.g. 10 questions of each step.
     np.random.seed(seed)
     shuffle_questions = copy.deepcopy(questions)
     np.random.shuffle(shuffle_questions)
@@ -156,7 +151,6 @@ def evaluate(
         split_shuffle_questions = np.array_split(batch_of_questions, num_eval_workers)
 
         count = 0
-        # TODO: Is this correct? Does this not mess up cumulative stats?
         while True:
             count += 1
 
@@ -395,8 +389,6 @@ def evaluate(
                     logger["eval/avg_tokens_per_question"] = avg_prompt + avg_response
                 break
             except Exception as e:
-                # TODO: This only works for single processes.
-                # Get this to work for multiple processes.
                 tb = traceback.format_exc()
                 print("An error occurred:", e)
                 print("Traceback:", tb)

@@ -207,7 +207,7 @@ class GPT(BaseAgent):
 
         cost_per_prompt_token_dict = {
             "gpt-3.5-turbo-1106": 0.001,
-            "gpt-3.5-turbo-0613": 0.001,  # TODO: Assume this is the same as gpt-3.5-turbo-1106?
+            "gpt-3.5-turbo-0613": 0.001,
             "gpt-4": 0.03,
             "gpt-4-1106-preview": 0.01,
             "gpt-4-32k": 0.06,
@@ -215,7 +215,7 @@ class GPT(BaseAgent):
 
         cost_per_response_token_dict = {
             "gpt-3.5-turbo-1106": 0.002,
-            "gpt-3.5-turbo-0613": 0.002,  # TODO: Assume this is the same as gpt-3.5-turbo-1106?
+            "gpt-3.5-turbo-0613": 0.002,
             "gpt-4": 0.06,
             "gpt-4-1106-preview": 0.03,
             "gpt-4-32k": 0.12,
@@ -427,8 +427,6 @@ class PaLM(BaseAgent):
             )
             full_user_message = context + examples_str + user_message
 
-            # TODO: Try using the message history for PaLM.
-            # Currently it only supports two agents.
             if self._engine == "chat-bison@001":
                 model = ChatModel.from_pretrained(self._engine)
                 chat = model.start_chat(
@@ -467,7 +465,7 @@ class PaLM(BaseAgent):
                 "prompt_tokens": num_prompt_tokens,
                 "response_tokens": num_response_tokens,
                 "cost": prompt_cost + response_cost,
-                "num_messages_removed": 0,  # TODO: Add support for message history
+                "num_messages_removed": 0,
             }
         else:
             output = "This is a mock output."

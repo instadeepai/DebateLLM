@@ -42,7 +42,6 @@ DATASET = (
 
 
 # Hardcode the ranges based on the names
-# TODO: delete this and use the run range
 dataset = DATASET.lower()
 RUN_RANGE = get_paper_dataset_ranges(dataset)
 
@@ -130,7 +129,6 @@ runs_table_df = runs_table_df[runs_table_df["eval/percent_complete"] == 100.0]
 # There must be at least 40 questions answered
 runs_table_df = runs_table_df[runs_table_df["eval/score/total_count"] >= 15]
 
-# TODO: This is only temporary needed
 if chart_type != "spider":
     runs_table_df = filter_results_for_paper(runs_table_df, dataset)
 

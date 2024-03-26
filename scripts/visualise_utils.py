@@ -552,7 +552,6 @@ def filter_results_for_paper(runs_table_df, dataset):
 
     # if dataset == "medqa":
     # Filter out scores less than 0.3
-    # TODO: Is this a good idea?
     # runs_table_df = runs_table_df[runs_table_df["eval/score/total_acc"] >= 0.55]
     # elif dataset == "pubmedqa":
     #     # Filter out scores less than 0.4:
@@ -614,7 +613,6 @@ def get_dataset_runs(run_range: List[int], dataset: str = None, engine: str = No
     )
     runs_table_df = runs_table_df[condition]
 
-    # TODO: This is only temporary needed
     runs_table_df = filter_results_for_paper(runs_table_df, dataset)
 
     if dataset is not None:

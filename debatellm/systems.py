@@ -511,7 +511,6 @@ class RoundRobinDebateQA(QASystem):
             for agent in range(self._num_agents)
         ]
 
-        # TODO: End the debate early if all agents agree on the answer
         answer, _ = most_frequent(final_answers)
 
         return answer, {
@@ -1332,9 +1331,6 @@ class Medprompt(QASystem):
         for i in range(self._num_reasoning_steps):
 
             try:
-                # TODO: Provide the options to the system as well. This would
-                # make it much easier to shuffle the answers. Furthermore, remove
-                # all questions without options in load_datasets.py.
                 shuffled_question, answer_mapping = self.shuffle_answers(question)
             except Exception as e:
                 shuffled_question = question

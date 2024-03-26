@@ -18,7 +18,6 @@ DATASET = "MedQA"  # MedQA, USMLE, PubMedQA, MMLU, CosmosQA, Ciar, GPQA,
 # RUN_RANGE = [3904, 4058]
 
 # Hardcode the ranges based on the names
-# TODO: delete this and use the run range
 RUN_RANGE = get_paper_dataset_ranges(DATASET.lower())
 
 # METRIC can be "Average seconds per question", "Total cost", "Average tokens per question"
