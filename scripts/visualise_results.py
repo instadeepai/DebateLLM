@@ -1,4 +1,4 @@
-# Copyright 2023 InstaDeep Ltd. All rights reserved.
+# Copyright Anon 2023. All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -122,7 +122,7 @@ runs_table_df = project.fetch_runs_table(id=full_run_ids).to_pandas()
 runs_table_df = runs_table_df.set_index("sys/id")
 
 # Filter out all runs not initiated by k.tessara
-runs_table_df = runs_table_df[runs_table_df["sys/owner"].isin(["k.tessera", "ap.smit"])]
+runs_table_df = runs_table_df[runs_table_df["sys/owner"].isin(["anon", "anon"])]
 
 # Filter out all runs that where less than 80% completed
 runs_table_df = runs_table_df[runs_table_df["eval/percent_complete"] == 100.0]

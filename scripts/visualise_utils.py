@@ -1,4 +1,4 @@
-# Copyright 2023 InstaDeep Ltd. All rights reserved.
+# Copyright Anon 2023. All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -595,10 +595,10 @@ def get_dataset_runs(run_range: List[int], dataset: str = None, engine: str = No
     # Set the index based on the custom names
     runs_table_df = runs_table_df.set_index("sys/id")
 
-    # Filter out all runs not initiated by k.tessara or ap.smit
-    # runs_table_df = runs_table_df[runs_table_df["sys/owner"] == "k.tessera"]
+    # Filter out all runs not initiated by k.tessara or anon
+    # runs_table_df = runs_table_df[runs_table_df["sys/owner"] == "anon"]
     runs_table_df = runs_table_df[
-        runs_table_df["sys/owner"].isin(["k.tessera", "ap.smit"])
+        runs_table_df["sys/owner"].isin(["anon", "anon"])
     ]
 
     # Filter out all runs that where less than 80% completed
