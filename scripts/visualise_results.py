@@ -51,7 +51,7 @@ sparse_legend = True
 # Initialize Neptune
 API_TOKEN = os.environ["TM_NEPTUNE_API_TOKEN"]
 project = neptune.init_project(
-    project="InstaDeep/debatellm",
+    project="Anon/debatellm",
     mode="read-only",
 )
 

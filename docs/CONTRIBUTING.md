@@ -20,7 +20,7 @@ again.
 To develop features for DebateLLM, clone the repository and install the core and development dependencies as follows:
 
 ```bash
-git clone https://github.com/instadeepai/debatellm.git
+git clone anon
 cd debatellm
 make build_env
 ```

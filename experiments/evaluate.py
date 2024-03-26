@@ -63,7 +63,7 @@ def evaluate(cfg: omegaconf.DictConfig):
     eval_dataset = cfg.dataset.eval_dataset
     if os.getenv("TM_NEPTUNE_API_TOKEN"):
         logger = neptune.init_run(
-            project="InstaDeep/debatellm",
+            project="Anon/debatellm",
             api_token=os.getenv("TM_NEPTUNE_API_TOKEN"),
             tags=[f"{eval_dataset}", f"{system_name}{agents}"],
         )

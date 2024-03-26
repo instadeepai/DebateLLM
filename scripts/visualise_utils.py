@@ -574,7 +574,7 @@ def get_dataset_runs(run_range: List[int], dataset: str = None, engine: str = No
 
     api_token = os.environ["TM_NEPTUNE_API_TOKEN"]
     project = neptune.init_project(
-        project="InstaDeep/debatellm",
+        project="Anon/debatellm",
         api_token=api_token,
         mode="read-only",
     )

@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://instadeep.aichor.ai/schema/latest/manifest.schema.json
+# yaml-language-server: $schema=https://anon.aichor.ai/schema/latest/manifest.schema.json
 
 kind: AIchorManifest
 apiVersion: 0.2.0

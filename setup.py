@@ -37,7 +37,6 @@ setup(
     description="A Python library for constitutional LLMs in the medical field.",
     long_description=readme,
     long_description_content_type="text/markdown",
-    author="InstaDeep Ltd",
     license="Apache License, Version 2.0",
     keywords="medical conversational LLMs",
     packages=setuptools.find_packages(),
