@@ -38,7 +38,7 @@ for pdf_file in pdf_files:
         for page_num in range(len(doc)):
             page = doc.load_page(page_num)
             pix = page.get_pixmap(matrix=mat)  # use zoom factor during conversion
-            output_file = pdf_file.replace(".pdf", f"_{page_num}.png")
+            output_file = pdf_file.replace(".pdf", f".png")
             pix.save(output_file)
 
         # Close the document

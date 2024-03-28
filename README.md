@@ -79,34 +79,34 @@ Our benchmarks showcase DebateLLM's performance on MedQA, PubMedQA, and MMLU dat
 ### MedQA Dataset
 
 <div>
-  <img src="./imgs/results/average_seconds_per_question_vs_accuracy_medqa_0.png" alt="Average Seconds per Question vs. Accuracy MedQA" width="54%"/>
-  <img src="./imgs/results/average_tokens_per_question_vs_accuracy_medqa_0.png" alt="Average Tokens per Question vs. Accuracy MedQA" width="39.6%"/>
+  <img src="./imgs/results/MedQA_Average seconds per question_scatter_plots.png" alt="Average Seconds per Question vs. Accuracy MedQA" width="46.5%"/>
+  <img src="./imgs/results/MedQA_Average tokens per question_scatter_plots.png" alt="Average Tokens per Question vs. Accuracy MedQA" width="46.5%"/>
 </div>
 <div>
-  <img src="./imgs/results/accuracy_vs_cost_0.png" alt="Accuracy vs. Cost MedQA" width="45%"/>
-  <img src="./imgs/results/total_acc_box_medqa_0.png" alt="Total Accuracy Box MedQA" width="48.7%"/>
+  <img src="./imgs/results/MedQA_Total cost_scatter_plots.png" alt="Accuracy vs. Cost MedQA" width="51.8%"/>
+  <img src="./imgs/results/medqa_total_acc_box.png" alt="Total Accuracy Box MedQA" width="41.2%"/>
 </div>
 
 ### PubMedQA Dataset
 
 <div>
-  <img src="./imgs/results/average_seconds_per_question_vs_accuracy_pubmedqa_0.png" alt="Average Seconds per Question vs. Accuracy PubMedQA" width="54%"/>
-  <img src="./imgs/results/average_tokens_per_question_vs_accuracy_pubmedqa_0.png" alt="Average Tokens per Question vs. Accuracy PubMedQA" width="39.6%"/>
+  <img src="./imgs/results/PubMedQA_Average seconds per question_scatter_plots.png" alt="Average Seconds per Question vs. Accuracy PubMedQA" width="46.5%"/>
+  <img src="./imgs/results/PubMedQA_Average tokens per question_scatter_plots.png" alt="Average Tokens per Question vs. Accuracy PubMedQA" width="46.5%"/>
 </div>
 <div>
-  <img src="./imgs/results/accuracy_vs_cost_corrected_0.png" alt="Accuracy vs. Cost PubMedQA" width="45%"/>
-  <img src="./imgs/results/total_acc_box_pubmedqa_0.png" alt="Total Accuracy Box PubMedQA" width="48.7%"/>
+  <img src="./imgs/results/PubMedQA_Total cost_scatter_plots.png" alt="Accuracy vs. Cost PubMedQA" width="51.8%"/>
+  <img src="./imgs/results/pubmedqa_total_acc_box.png" alt="Total Accuracy Box PubMedQA" width="41.2%"/>
 </div>
 
 ### MMLU Dataset
 
 <div>
-  <img src="./imgs/results/average_seconds_per_question_vs_accuracy_mmlu_0.png" alt="Average Seconds per Question vs. Accuracy MMLU" width="54%"/>
-  <img src="./imgs/results/average_tokens_per_question_vs_accuracy_mmlu_0.png" alt="Average Tokens per Question vs. Accuracy MMLU" width="39.6%"/>
+  <img src="./imgs/results/MMLU_Average seconds per question_scatter_plots.png" alt="Average Seconds per Question vs. Accuracy MMLU" width="46.5%"/>
+  <img src="./imgs/results/MMLU_Average tokens per question_scatter_plots.png" alt="Average Tokens per Question vs. Accuracy MMLU" width="46.5%"/>
 </div>
 <div>
-  <img src="./imgs/results/total_cost_vs_accuracy_mmlu_0.png" alt="Accuracy vs. Cost MMLU" width="45%"/>
-  <img src="./imgs/results/total_acc_box_mmlu_0.png" alt="Total Accuracy Box MMLU" width="48.7%"/>
+  <img src="./imgs/results/MMLU_Total cost_scatter_plots.png" alt="Accuracy vs. Cost MMLU" width="51.8%"/>
+  <img src="./imgs/results/mmlu_total_acc_box.png" alt="Total Accuracy Box MMLU" width="41.2%"/>
 </div>
 
 ### Agent Agreement Analysis
@@ -114,8 +114,8 @@ Our benchmarks showcase DebateLLM's performance on MedQA, PubMedQA, and MMLU dat
 Modulating the agreement intensity provides a substantial improvement in performance for various models. For Multi-Persona, there is an approximate 15% improvement, and for Society of Minds (SoM), an approximate 5% improvement on the USMLE dataset. The 90% agreement intensity prompts applied to Multi-Persona demonstrate a new high score on the MedQA dataset, highlighted in the MedQA dataset cost plot as a red cross.
 
 <div>
-  <img src="./imgs/results/prompt_agreement_vs_accuracy_0.png" alt="Agreement Intensity" width="47%"/>
-  <img src="./imgs/results/agreement_vs_accuracy_0.png" alt="Agreement vs Accuracy" width="47%"/>
+  <img src="./imgs/results/prompt_agreement_vs_accuracy.png" alt="Agreement Intensity" width="47%"/>
+  <img src="./imgs/results/agreement_vs_accuracy.png" alt="Agreement vs Accuracy" width="47%"/>
 </div>
 
 The benchmarks indicate the effectiveness of various strategies and models implemented within DebateLLM. For detailed analysis and discussion, refer to our [paper](https://arxiv.org/abs/2311.17371).
