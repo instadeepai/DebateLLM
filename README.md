@@ -135,4 +135,3 @@ If you use DebateLLM in your work, please cite our paper:
 }
 
 ```
-Link to the paper: Anon.
