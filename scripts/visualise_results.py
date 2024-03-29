@@ -31,7 +31,7 @@ from scripts.visualise_utils import (
 )
 
 # Set the chart type and dataset to plot
-chart_type = "spider"  # "bar", "spider", "scatter", "line", line_error_bar, "box",
+chart_type = "box"  # "bar", "spider", "scatter", "line", line_error_bar, "box",
 # "config_table"
 DATASET = (
     "medqa"  # "medqa", "usmle", "pubmedqa", "mmlu", "cosmosqa", "ciar", "gpqa", "all"

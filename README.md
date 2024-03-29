@@ -74,9 +74,9 @@ To visualize the results with Neptune:
 
 ## 📊 Benchmarks
 
-Our benchmarks showcase DebateLLM's performance on MedQA, PubMedQA, and MMLU datasets, focusing on accuracy versus cost, time efficiency, token economy, and agent agreement impact. These visualizations illustrate the balance between accuracy and computational cost, the speed and quality of responses, linguistic efficiency, and the effects of consensus strategies in medical Q&A contexts. Each dataset highlights the varied capabilities of DebateLLM's strategies.
+Our benchmarks showcase DebateLLM's performance on MedQA, PubMedQA, and MMLU datasets, focusing on accuracy versus cost, time efficiency, token economy, and agent agreement impact. For all our experiments we use GPT 3.5, unless specified otherwise. These visualizations illustrate the balance between accuracy and computational cost, the speed and quality of responses, linguistic efficiency, and the effects of consensus strategies in medical Q&A contexts. Each dataset highlights the varied capabilities of DebateLLM's strategies.
 
-### MedQA Dataset
+#### MedQA Dataset
 
 <div>
   <img src="./imgs/results/MedQA_Average seconds per question_scatter_plots.png" alt="Average Seconds per Question vs. Accuracy MedQA" width="46.5%"/>
@@ -119,6 +119,14 @@ Modulating the agreement intensity provides a substantial improvement in perform
 </div>
 
 The benchmarks indicate the effectiveness of various strategies and models implemented within DebateLLM. For detailed analysis and discussion, refer to our [paper](https://arxiv.org/abs/2311.17371).
+
+### GPT4 results
+
+We also assessed GPT-4's capability on the MedQA dataset, applying the optimal agreement modulation value identified for Multi-Persona with GPT-3.5 on USMLE. The results suggest that these hyperparameter settings are indeed capable of transferring effectively to more advanced models. The results are shown below:
+<div>
+  <img src="./imgs/results/medqa_gpt4.png" alt="MedQA gpt4" width="51.8%"/>
+  <img src="./imgs/results/medqa_gpt4_total_acc_box.png" alt="Total Accuracy Box MedQA" width="41.2%"/>
+</div>
 
 ## Contributing 🤝
 Please read our [contributing docs](docs/CONTRIBUTING.md) for details on how to submit pull requests, our Contributor License Agreement and community guidelines.

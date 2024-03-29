@@ -489,9 +489,15 @@ def get_paper_dataset_ranges(dataset):
             [4116, 4163],
         ]
     elif dataset == "medqa":
+        # GPT-3.5 results
+        # run_range = [
+        #     [3886, 4065],
+        #     [4116, 4163],
+        # ]
+
+        # GPT-4 results
         run_range = [
-            [3886, 4065],
-            [4116, 4163],
+            [4091, 4199],
         ]
     elif dataset == "pubmedqa":
         run_range = [
@@ -514,16 +520,22 @@ def get_paper_dataset_ranges(dataset):
 def filter_results_for_paper(runs_table_df, dataset):
     # Medical datasets should have 44 runs.
     # Non-medical datasets should have 36 runs.
-
     dataset = dataset.lower()
 
-    # Filter out GPT-4 and PaLM
+    # Filter out GPT-3.5
     runs_table_df = runs_table_df[
         runs_table_df["config/system/agents/Agent_0/engine"] != "chat-bison@001"
     ]
+
+    # Filter out PaLM
     runs_table_df = runs_table_df[
-        runs_table_df["config/system/agents/Agent_0/engine"] != "gpt-4"
+        runs_table_df["config/system/agents/Agent_0/engine"] != "chat-bison@001"
     ]
+
+    # Filter out GPT-4
+    # runs_table_df = runs_table_df[
+    #     runs_table_df["config/system/agents/Agent_0/engine"] != "gpt-4"
+    # ]
 
     # Filter out Multi-Persona agreement intensities greater than 0
     # Filter out runs where 'ai' is greater than -1, ignoring NaN values
