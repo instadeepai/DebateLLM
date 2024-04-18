@@ -149,8 +149,8 @@ dmypy.json
 # cache
 3.8/
 
-# OpenAI API key
-api_key.txt
+# API key
+*api_key.txt
 api_keys_human_read_only.txt
 
 # Experiment results
