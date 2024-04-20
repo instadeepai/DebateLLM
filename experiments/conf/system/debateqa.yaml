@@ -15,9 +15,9 @@ agents: # options: [gpt, palm]
   #   - prompt: "${system.agent_prompts.cot}"
 
   # GPT-3.5 agent
-  - - "${system.gpt}"
-    - engine: "gpt-3.5-turbo-0613" # gpt uses gpt-3.5 engine
-    - prompt: "${system.agent_prompts.cot}"
+  # - - "${system.gpt}"
+  #   - engine: "gpt-3.5-turbo-0613" # gpt uses gpt-3.5 engine
+  #   - prompt: "${system.agent_prompts.cot}"
 
   # PaLM agent
   - - "${system.palm}" # palm uses default setup

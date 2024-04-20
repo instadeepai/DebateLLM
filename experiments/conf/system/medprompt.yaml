@@ -13,7 +13,7 @@ name: medprompt
 agents: # options: [gpt, palm]
   # GPT-3 agent
   - - "${system.gpt}"
-    - engine: "gpt-4" # gpt uses gpt-4 engine
+    - engine: "mixtral-8x7b-instruct" # gpt uses gpt-4 engine
     - cost_per_prompt_token: 0.03  # dollar costs per 1000 prompt token
     - cost_per_response_token: 0.06  # dollar costs per 1000 response token
     - prompt: "${system.agent_prompts.cot_medprompt}"

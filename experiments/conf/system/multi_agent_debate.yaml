@@ -11,9 +11,9 @@ num_rounds: 2
 agents: # options: [gpt, palm]
   # GPT-3.5 agent
   - - "${system.gpt}"
-    - engine: "gpt-4" # gpt uses gpt-3.5 engine
+    - engine: "mixtral-8x7b-instruct" # gpt uses gpt-3.5 engine
     - prompt: "${system.agent_prompts.cot}"
   # GPT-3.5 agent
   - - "${system.gpt}"
-    - engine: "gpt-4" # gpt uses gpt-3.5 engine
+    - engine: "mixtral-8x7b-instruct" # gpt uses gpt-3.5 engine
     - prompt: "${system.agent_prompts.cot}"

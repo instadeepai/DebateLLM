@@ -13,13 +13,13 @@ agreement_intensity: -1 # -1 for default behavior, otherwise {0, ..., 10} for ag
 agents: # options: [gpt, palm]
   # Agent 1
   - - "${system.gpt}"
-    - engine: "gpt-4" # gpt uses gpt-3.5 engine
+    - engine: "mixtral-8x7b-instruct" # gpt uses gpt-3.5 engine
     - prompt: "${system.agent_prompts.cot}"
   # Agent 2
   - - "${system.gpt}"
-    - engine: "gpt-4" # gpt uses gpt-3.5 engine
+    - engine: "mixtral-8x7b-instruct" # gpt uses gpt-3.5 engine
     - prompt: "${system.agent_prompts.cot}"
   # Summarizer
   - - "${system.gpt}"
-    - engine: "gpt-4" # gpt uses gpt-3.5 engine
+    - engine: "mixtral-8x7b-instruct" # gpt uses gpt-3.5 engine
     - prompt: "${system.agent_prompts.summarizer}"

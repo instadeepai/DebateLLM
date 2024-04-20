@@ -17,7 +17,7 @@ defaults: # options: [simple, cot, letter, explain...]: any prompt used in 'agen
 gpt:
   _target_: debatellm.agents.GPT
   prompt: ${system.agent_prompts.simple}
-  engine: "gpt-3.5-turbo-0613"
+  engine: "mixtral-8x7b-instruct"
   few_shot_examples: False # Options include: [False, ${system.medpalm_examples.few_shot}, ${system.medpalm_examples.cot_few_shot}]
   mock: False
   sampling:

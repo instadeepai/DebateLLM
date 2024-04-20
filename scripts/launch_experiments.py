@@ -204,9 +204,9 @@ exp_table.append(
 # Add all 3 datasets to the experiments
 for exp in exp_table:
     exp["dataset"] = [
-        # "cosmosqa",
-        # "ciar",
-        # "gpqa",
+        "cosmosqa",
+        "ciar",
+        "gpqa",
         "medqa",
         "pubmedqa",
         "mmlu",
