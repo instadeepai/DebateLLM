@@ -21,7 +21,7 @@ exp_table.append(
     {
         "system": "single_agent",
         "system.agents": gen_agent_config(
-            1, use_gpt=[False, True], prompt=["simple", "cot"]
+            1, use_gpt=True, prompt=["simple", "cot"]
         ),
     }
 )
@@ -36,7 +36,7 @@ exp_table.extend(
             "system.num_aggregation_steps": 0,
             "system.agents": gen_agent_config(
                 1,
-                use_gpt=[False, True],
+                use_gpt=True,
                 prompt="er_simple",
                 is_es=True,
                 use_few_shot_examples=[False, True],
@@ -49,7 +49,7 @@ exp_table.extend(
             "system.num_aggregation_steps": 0,
             "system.agents": gen_agent_config(
                 1,
-                use_gpt=[False, True],
+                use_gpt=True,
                 prompt="er_cot",
                 is_es=True,
                 use_few_shot_examples=[False, True],
@@ -68,7 +68,7 @@ exp_table.extend(
             "system.num_aggregation_steps": 0,
             "system.agents": gen_agent_config(
                 1,
-                use_gpt=[False, True],
+                use_gpt=True,
                 prompt="er_simple",
                 is_es=True,
                 use_few_shot_examples=[False, True],
@@ -81,7 +81,7 @@ exp_table.extend(
             "system.num_aggregation_steps": 0,
             "system.agents": gen_agent_config(
                 1,
-                use_gpt=[False, True],
+                use_gpt=True,
                 prompt="er_cot",
                 is_es=True,
                 use_few_shot_examples=[False, True],
@@ -211,4 +211,4 @@ for exp in exp_table:
         "pubmedqa",
         "mmlu",
     ]  # "medqa", "pubmedqa", "mmlu", "cosmosqa", "ciar", "gpqa", medmcqa
-run_experiments(exp_table, parallel_workers=4, shuffle=False, sort_by_dataset=False)
+run_experiments(exp_table, parallel_workers=2, shuffle=False, sort_by_dataset=False)
