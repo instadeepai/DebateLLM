@@ -24,5 +24,7 @@ gpt:
     max_tokens: 1000
     temperature: 0.5 # Taken from here: https://community.openai.com/t/cheat-sheet-mastering-temperature-and-top-p-in-chatgpt-api-a-few-tips-and-tricks-on-controlling-the-creativity-deterministic-output-of-prompt-responses/172683
     top_p: 0.5
-  cost_per_prompt_token: 0.001 # 0.03  # dollar costs per 1000 prompt token
-  cost_per_response_token:  0.002 # 0.06  # dollar costs per 1000 response token
+  # cost_per_prompt_token: 0.001 # 0.03  # dollar costs per 1000 prompt token
+  # cost_per_response_token:  0.002 # 0.06  # dollar costs per 1000 response token
+  cost_per_prompt_token: 0.0006 # 0.6  # dollar costs per million prompt token
+  cost_per_response_token:  0.0006 # 0.6  # dollar costs per million response token

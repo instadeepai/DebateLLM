@@ -1,5 +1,6 @@
 defaults:
   - gpt
+  - palm
   - debate_prompts: medprompt
 _target_: debatellm.systems.Medprompt
 num_reasoning_steps: 5

@@ -15,6 +15,13 @@ agents: # options: [gpt, palm]
   #   - prompt: "${system.agent_prompts.simple}"
 
   # PaLM agent
-  - - "${system.palm}" # palm uses default setup
+  # - - "${system.palm}" # palm uses default setup
+  #   - prompt: "${system.agent_prompts.simple}"
+  #   - engine: "text-bison@001"
+
+    # Mixtral agent
+  - - "${system.gpt}"
+    - engine: "mixtral-8x7b-instruct" # mixtral 8x7b instruct engine
     - prompt: "${system.agent_prompts.simple}"
-    - engine: "text-bison@001"
+    - cost_per_prompt_token: 0.0006 # 0.6  # dollar costs per million prompt token
+    - cost_per_response_token:  0.0006 # 0.6  # dollar costs per million response token

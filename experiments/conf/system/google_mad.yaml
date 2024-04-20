@@ -1,5 +1,6 @@
 defaults:
   - gpt
+  - palm
   - debate_prompts: google_ma_debate
 
 _target_: debatellm.systems.MultiAgentDebateGoogle

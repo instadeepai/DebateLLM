@@ -14,7 +14,7 @@ builder:
 spec:
   operator: tf
   image: debatellm
-  command: python scripts/launch_experiments.py
+  command: python experiments/evaluate.py
   tensorboard:
     enabled: false
 
