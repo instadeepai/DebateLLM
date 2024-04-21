@@ -141,7 +141,7 @@ def run_experiments(
 
     if verbose:
         print(f"Launching {len(experiments)} experiments...")
-
+        
     with ThreadPoolExecutor(max_workers=parallel_workers) as executor:
         list(tqdm(executor.map(run_experiment, experiments), total=len(experiments)))
 

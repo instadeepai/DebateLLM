@@ -17,7 +17,10 @@ import datetime
 import time
 from importlib import import_module
 from typing import Any, Callable, Dict, Optional, Tuple
+import logging
 
+# Set the logging level for 'httpx' to 'WARNING' to suppress info and debug messages
+logging.getLogger('httpx').setLevel(logging.WARNING)
 import google
 import numpy as np
 import openai

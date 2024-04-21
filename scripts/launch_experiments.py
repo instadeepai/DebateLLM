@@ -211,4 +211,5 @@ for exp in exp_table:
         "pubmedqa",
         "mmlu",
     ]  # "medqa", "pubmedqa", "mmlu", "cosmosqa", "ciar", "gpqa", medmcqa
+
 run_experiments(exp_table, parallel_workers=2, shuffle=False, sort_by_dataset=False)
