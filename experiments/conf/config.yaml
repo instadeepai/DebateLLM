@@ -4,7 +4,7 @@ defaults:
   - dataset: chess # [options: usmle, medmcqa, mmlu, pubmedqa, medqa, ciar, cosmosqa, gpqa, chess]
   - _self_
 
-max_eval_count: 1
+max_eval_count: 10
 num_eval_workers: 1 # Each worker receives a full batch of questions.
 eval_batch_size: 10 # Defaults to batch_size=1.
 verbose: True
