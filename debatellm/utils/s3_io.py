@@ -225,9 +225,9 @@ class FileHandler:
                     data.append(json.loads(line))
         return data
 
-    def read_json_file(self, path: str):
+    def read_json_file(self, path: str) -> Dict:
         full_path = os.path.join(self.bucket_path, path)
-        with open(full_path, 'r') as file:
+        with open(full_path, "r") as file:
             data = json.load(file)
         return data
 

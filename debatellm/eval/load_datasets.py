@@ -561,7 +561,10 @@ def chess_questions(
 
     questions = []
     for i, q in enumerate(json_obj["examples"]):
-        q_text = "For the following (in-progress) chess games, please select the option that shows all the legal distination squares that completes the notation: " + q["input"]
+        q_text = (
+            "For the following (in-progress) chess games, please select the option that shows all the legal distination squares that completes the notation: "
+            + q["input"]
+        )
         correct_answer = " ".join(q["target"])
 
         # Generate distractors from other example targets
@@ -571,7 +574,9 @@ def chess_questions(
         # Loop until we find three unique distractors that are not the correct answer
         while not unique_distractors_found:
             random.shuffle(distractors)  # Shuffle distractors to randomize selection
-            selected_distractors = distractors[:3]  # Select first three shuffled as distractors
+            selected_distractors = distractors[
+                :3
+            ]  # Select first three shuffled as distractors
             unique_distractors_found = all(
                 [distractor != correct_answer for distractor in selected_distractors]
             )
@@ -581,15 +586,17 @@ def chess_questions(
 
         # Identify the correct solution after shuffling
         solution_index = options.index(correct_answer)
-        solution = chr(65 + solution_index)  # Map index to A, B, C, D for multiple choice
-        
+        solution = chr(
+            65 + solution_index
+        )  # Map index to A, B, C, D for multiple choice
+
         question = {
             "no": i,
             "question": q_text,
             "options": {chr(65 + j): opt for j, opt in enumerate(options)},
             "solution": solution,
             "subcategory": "Chess Moves",
-            "category": "Game Analysis"
+            "category": "Game Analysis",
         }
 
         questions.append(question)

@@ -14,18 +14,16 @@
 
 import abc
 import datetime
+import logging
 import time
 from importlib import import_module
 from typing import Any, Callable, Dict, Optional, Tuple
-import logging
 
-# Set the logging level for 'httpx' to 'WARNING' to suppress info and debug messages
-logging.getLogger('httpx').setLevel(logging.WARNING)
 import google
 import numpy as np
 import openai
-from openai import OpenAI
 import vertexai
+from openai import OpenAI
 from vertexai.preview.language_models import (
     ChatModel,
     InputOutputTextPair,
@@ -40,6 +38,10 @@ from debatellm.utils.debate import (
 )
 from debatellm.utils.gcloud import load_gcloud_credentials
 from debatellm.utils.openai import load_openai_api_key
+
+# Set the logging level for 'httpx' to 'WARNING' to suppress info and debug messages
+logging.getLogger("httpx").setLevel(logging.WARNING)
+
 
 # Try except decorator
 def try_except_decorator(func: Callable) -> Callable:
@@ -240,7 +242,9 @@ class GPT(BaseAgent):
 
             if engine == "mixtral-8x7b-instruct":
                 openai.api_key = api_key = load_openai_api_key(path="pplx_api_key.txt")
-                self._client = OpenAI(api_key=api_key, base_url="https://api.perplexity.ai")
+                self._client = OpenAI(
+                    api_key=api_key, base_url="https://api.perplexity.ai"
+                )
             else:
                 openai.api_key = api_key = load_openai_api_key()
                 self._client = OpenAI(api_key=api_key)
@@ -327,29 +331,29 @@ class GPT(BaseAgent):
 
             response = self._client.chat.completions.create(
                 model=self._engine,
-                messages=remove_spaces_in_name(messages),
+                messages=remove_spaces_in_name(messages),  # type: ignore
                 **self._sampling,
             )
 
             prompt_cost = (
-                np.ceil(response.usage.prompt_tokens / 1000)
+                np.ceil(response.usage.prompt_tokens / 1000)  # type: ignore
                 * self._cost_per_prompt_token
             )
             response_cost = (
-                np.ceil(response.usage.completion_tokens / 1000)
+                np.ceil(response.usage.completion_tokens / 1000)  # type: ignore
                 * self._cost_per_response_token
             )
             usage_info = {
-                "prompt_tokens": int(response.usage.prompt_tokens),
-                "response_tokens": int(response.usage.completion_tokens),
+                "prompt_tokens": int(response.usage.prompt_tokens),  # type: ignore
+                "response_tokens": int(response.usage.completion_tokens),  # type: ignore
                 "cost": prompt_cost + response_cost,
                 "num_messages_removed": history_counter,
             }
             response = response.choices[0].message.content  # type: ignore
         else:
-            response = "This is a mock output."
-            usage_info = {"prompt_tokens": 0, "response_tokens": 0, "cost": 0}
-        return response, usage_info
+            response = "This is a mock output."  # type: ignore
+            usage_info = {"prompt_tokens": 0, "response_tokens": 0, "cost": 0}  # type: ignore
+        return str(response), usage_info
 
 
 class PaLM(BaseAgent):

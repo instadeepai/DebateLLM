@@ -12,7 +12,7 @@ if [ -e "${FOLDER}task.json" ]; then
     echo "CHESS dataset already exists in $FOLDER"
 else
     echo "Downloading CHESS dataset to $FOLDER"
-    
+
     # Ensure the target directory exists
     if [ ! -d "${FOLDER}" ]; then
         echo "Creating folder ${FOLDER}"

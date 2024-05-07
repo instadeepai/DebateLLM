@@ -20,9 +20,7 @@ exp_table = []
 exp_table.append(
     {
         "system": "single_agent",
-        "system.agents": gen_agent_config(
-            1, use_gpt=True, prompt=["simple", "cot"]
-        ),
+        "system.agents": gen_agent_config(1, use_gpt=True, prompt=["simple", "cot"]),
     }
 )
 
