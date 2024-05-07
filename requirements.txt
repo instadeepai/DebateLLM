@@ -248,7 +248,7 @@ tqdm==4.65.0
 traitlets==5.9.0
 transformers @ git+https://github.com/huggingface/transformers.git@ea91c2adca842da3d2f87e094504fa7d66a7008a
 triton==2.0.0
-typing_extensions==4.6.3
+typing_extensions
 tzdata==2023.3
 uc-micro-py==1.0.2
 uri-template==1.2.0
