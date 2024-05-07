@@ -1,7 +1,7 @@
 defaults:
   - system: single_agent # [options: single_agent, debateqa, google_mad, ensemble_refinement,
                                 #    tsinghua_mad, spp_synergy, chateval, medprompt]
-  - dataset: medqa # [options: usmle, medmcqa, mmlu, pubmedqa, medqa, ciar, cosmosqa, gpqa]
+  - dataset: chess # [options: usmle, medmcqa, mmlu, pubmedqa, medqa, ciar, cosmosqa, gpqa, chess]
   - _self_
 
 max_eval_count: 1

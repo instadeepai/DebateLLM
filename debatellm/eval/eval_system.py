@@ -485,6 +485,11 @@ def eval_system(
             file_handler,
             dataset_settings,
         )
+    elif dataset == "chess":
+        questions, format_question_fn = load_datasets.chess_questions(
+            file_handler,
+            dataset_settings,
+        )
     else:
         raise ValueError(f"Dataset {dataset} not supported.")
 
