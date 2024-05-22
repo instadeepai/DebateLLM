@@ -15,7 +15,7 @@ num_aggregation_steps: 1
 agents: # options: [gpt, palm]
   # GPT-3.5 agent
   - - "${system.gpt}"
-    - engine: "mixtral-8x7b-instruct" # gpt uses gpt-3.5 engine
+    - engine: "gpt-3.5-turbo-0613" # gpt uses gpt-3.5 engine
     - prompt: "${system.agent_prompts.er_simple}"
     - few_shot_examples: ${system.medpalm_examples.few_shot} # False, ${system.medpalm_examples.few_shot} or ${system.medpalm_examples.cot_few_shot}
     - sampling:
