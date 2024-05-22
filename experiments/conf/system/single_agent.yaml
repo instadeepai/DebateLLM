@@ -10,9 +10,9 @@ name: single_agent # Used for distinguishing between spp_synergy.
 agents: # options: [gpt, palm]
 
   # GPT-3.5 agent
-  # - - "${system.gpt}"
-  #   - engine: "gpt-3.5-turbo-0613" # gpt uses gpt-3.5 engine
-  #   - prompt: "${system.agent_prompts.simple}"
+  - - "${system.gpt}"
+    - engine: "gpt-3.5-turbo-0613" # gpt uses gpt-3.5 engine
+    - prompt: "${system.agent_prompts.simple}"
 
   # PaLM agent
   # - - "${system.palm}" # palm uses default setup
@@ -20,8 +20,8 @@ agents: # options: [gpt, palm]
   #   - engine: "text-bison@001"
 
     # Mixtral agent
-  - - "${system.gpt}"
-    - engine: "mixtral-8x7b-instruct" # mixtral 8x7b instruct engine
-    - prompt: "${system.agent_prompts.simple}"
-    - cost_per_prompt_token: 0.0006 # 0.6  # dollar costs per million prompt token
-    - cost_per_response_token:  0.0006 # 0.6  # dollar costs per million response token
+  # - - "${system.gpt}"
+  #   - engine: "mixtral-8x7b-instruct" # mixtral 8x7b instruct engine
+  #   - prompt: "${system.agent_prompts.simple}"
+  #   - cost_per_prompt_token: 0.0006 # 0.6  # dollar costs per million prompt token
+  #   - cost_per_response_token:  0.0006 # 0.6  # dollar costs per million response token
