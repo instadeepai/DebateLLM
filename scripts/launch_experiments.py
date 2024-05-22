@@ -16,7 +16,7 @@ from scripts.experiments_utils import gen_agent_config, run_experiments
 
 exp_table = []
 
-agent_type = "gpt"
+agent_type = "mixtral"
 
 # Single agent
 # exp_table.append(
@@ -91,36 +91,36 @@ agent_type = "gpt"
 # )
 
 # Ensemble Refinement
-# exp_table.extend(
-#     [
-#         {
-#             "system": "ensemble_refinement",
-#             "system.name": "ensemble_refinement",
-#             "system.num_reasoning_steps": 3,
-#             "system.num_aggregation_steps": [1, 9],
-#             "system.agents": gen_agent_config(
-#                 1,
-#                 agent_type=agent_type,
-#                 prompt="er_simple",
-#                 is_es=True,
-#                 use_few_shot_examples=False, # [False, True],
-#             ),
-#         },
-#         {
-#             "system": "ensemble_refinement_er_debate",
-#             "system.name": "ensemble_refinement",
-#             "system.num_reasoning_steps": 3,
-#             "system.num_aggregation_steps": [1, 9],
-#             "system.agents": gen_agent_config(
-#                 1,
-#                 agent_type=agent_type,
-#                 prompt="er_cot",
-#                 is_es=True,
-#                 use_few_shot_examples=False, # [False, True],
-#             ),
-#         },
-#     ]
-# )
+exp_table.extend(
+    [
+        {
+            "system": "ensemble_refinement",
+            "system.name": "ensemble_refinement",
+            "system.num_reasoning_steps": 3,
+            "system.num_aggregation_steps": [1, 9],
+            "system.agents": gen_agent_config(
+                1,
+                agent_type=agent_type,
+                prompt="er_simple",
+                is_es=True,
+                use_few_shot_examples=False, # [False, True],
+            ),
+        },
+        {
+            "system": "ensemble_refinement_er_debate",
+            "system.name": "ensemble_refinement",
+            "system.num_reasoning_steps": 3,
+            "system.num_aggregation_steps": [1, 9],
+            "system.agents": gen_agent_config(
+                1,
+                agent_type=agent_type,
+                prompt="er_cot",
+                is_es=True,
+                use_few_shot_examples=False, # [False, True],
+            ),
+        },
+    ]
+)
 
 # SPP Synergy
 # exp_table.append(
@@ -141,18 +141,18 @@ agent_type = "gpt"
 #         "system.agreement_intensity": [2, 6],
 #     }
 # )
-exp_table.append(
-    {
-        "system": "google_mad",
-        "system.summarize_answers": [True, False],
-        "system.agents": gen_agent_config(
-            [2, 3, 4],
-            agent_type=agent_type,
-            prompt="cot",
-        ),
-        "system.num_rounds": [2, 3],
-    }
-)
+# exp_table.append(
+#     {
+#         "system": "google_mad",
+#         "system.summarize_answers": [True, False],
+#         "system.agents": gen_agent_config(
+#             [2, 3, 4],
+#             agent_type=agent_type,
+#             prompt="cot",
+#         ),
+#         "system.num_rounds": [2, 3],
+#     }
+# )
 
 
 # # Tsinghua MAD

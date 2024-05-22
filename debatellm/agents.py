@@ -350,6 +350,13 @@ class GPT(BaseAgent):
                 "num_messages_removed": history_counter,
             }
             response = response.choices[0].message.content  # type: ignore
+
+            # If the response is to large, we cut off the start of the response
+            # until the response is small enough.
+            max_response_length = 1024
+            if len(str(response)) > max_response_length:
+                response = str(response)[-max_response_length:]
+
         else:
             response = "This is a mock output."  # type: ignore
             usage_info = {"prompt_tokens": 0, "response_tokens": 0, "cost": 0}  # type: ignore
