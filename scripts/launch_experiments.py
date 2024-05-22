@@ -19,12 +19,12 @@ exp_table = []
 agent_type = "gpt"
 
 # Single agent
-exp_table.append(
-    {
-        "system": "single_agent",
-        "system.agents": gen_agent_config(1, agent_type=agent_type, prompt=["simple", "cot"]),
-    }
-)
+# exp_table.append(
+#     {
+#         "system": "single_agent",
+#         "system.agents": gen_agent_config(1, agent_type=agent_type, prompt=["simple", "cot"]),
+#     }
+# )
 
 # Single Agent Ensemble Refinement
 # exp_table.extend(
@@ -131,28 +131,28 @@ exp_table.append(
 # )
 
 
-# # # Google MAD
-# # # exp_table.append(
-# # #     {
-# # #         "system": "google_mad",
-# # #         "system.summarize_answers": False,
-# # #         "system.agents": gen_agent_config(3, agent_type=agent_type, prompt="cot"),
-# # #         "system.num_rounds": 2,
-# # #         "system.agreement_intensity": [2, 6],
-# # #     }
-# # # )
-# # exp_table.append(
-# #     {
-# #         "system": "google_mad",
-# #         "system.summarize_answers": [True, False],
-# #         "system.agents": gen_agent_config(
-# #             [2, 3, 4],
-# #             agent_type=agent_type,
-# #             prompt="cot",
-# #         ),
-# #         "system.num_rounds": [2, 3],
-# #     }
-# # )
+# Google MAD
+# exp_table.append(
+#     {
+#         "system": "google_mad",
+#         "system.summarize_answers": False,
+#         "system.agents": gen_agent_config(3, agent_type=agent_type, prompt="cot"),
+#         "system.num_rounds": 2,
+#         "system.agreement_intensity": [2, 6],
+#     }
+# )
+exp_table.append(
+    {
+        "system": "google_mad",
+        "system.summarize_answers": [True, False],
+        "system.agents": gen_agent_config(
+            [2, 3, 4],
+            agent_type=agent_type,
+            prompt="cot",
+        ),
+        "system.num_rounds": [2, 3],
+    }
+)
 
 
 # # Tsinghua MAD
