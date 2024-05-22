@@ -297,10 +297,16 @@ class GPT(BaseAgent):
                     if "agent_role" in self._prompt
                     else "assistant"
                 )
+
+                mode=self._prompt_from_history
+                # Mixtral only works with alternative (e.g. user, assistant, user, .. chats.
+                if self._engine == "mixtral-8x7b-instruct":
+                    mode = "one_prompt"
+
                 prompts_from_history = construct_message_from_history(
                     message_history,
                     agent_role,
-                    mode=self._prompt_from_history,
+                    mode=mode,
                 )
                 messages.extend(prompts_from_history)
 
@@ -353,7 +359,7 @@ class GPT(BaseAgent):
 
             # If the response is to large, we cut off the start of the response
             # until the response is small enough.
-            max_response_length = 1024
+            max_response_length = 512
             if len(str(response)) > max_response_length:
                 response = str(response)[-max_response_length:]
 

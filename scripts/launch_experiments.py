@@ -204,7 +204,8 @@ exp_table.extend(
 # Add all 3 datasets to the experiments
 for exp in exp_table:
     exp["dataset"] = [
-        "medqa", "pubmedqa", "mmlu", "cosmosqa", "ciar", "gpqa", "medmcqa", "chess",
+        "chess",
+        # "medqa", "pubmedqa", "mmlu", "cosmosqa", "ciar", "gpqa", "medmcqa", "chess",
     ]  # "medqa", "pubmedqa", "mmlu", "cosmosqa", "ciar", "gpqa", "medmcqa", "chess"
 
 run_experiments(exp_table, parallel_workers=1, shuffle=False, sort_by_dataset=False)
