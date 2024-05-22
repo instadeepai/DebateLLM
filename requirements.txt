@@ -113,7 +113,7 @@ jupyter_server==2.6.0
 jupyter_server_terminals==0.4.4
 jupyterlab-pygments==0.2.2
 jupyterlab-widgets==3.0.7
-kaggle
+kaggle==1.5.16
 keras==2.12.0
 kiwisolver==1.4.4
 latex==0.7.0
@@ -161,7 +161,7 @@ nvidia-nccl-cu11==2.14.3
 nvidia-nvtx-cu11==11.7.91
 oauthlib==3.2.2
 omegaconf==2.3.0
-openai==0.27.8
+openai==1.21.2
 opt-einsum==3.3.0
 orjson==3.9.1
 overrides==7.3.1
@@ -248,7 +248,7 @@ tqdm==4.65.0
 traitlets==5.9.0
 transformers @ git+https://github.com/huggingface/transformers.git@ea91c2adca842da3d2f87e094504fa7d66a7008a
 triton==2.0.0
-typing_extensions==4.6.3
+typing_extensions
 tzdata==2023.3
 uc-micro-py==1.0.2
 uri-template==1.2.0

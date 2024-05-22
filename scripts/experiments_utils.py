@@ -43,7 +43,7 @@ def encode_config(config):
 
 def gen_agent_config(
     num_agents=1,
-    use_gpt=True,
+    agent_type="gpt",
     prompt="cot",
     is_es=False,
     use_few_shot_examples=None,
@@ -52,7 +52,7 @@ def gen_agent_config(
 
     settings = {
         "num_agents": num_agents,
-        "use_gpt": use_gpt,
+        "agent": agent_type,
         "prompt": prompt,
         "use_few_shot_examples": use_few_shot_examples,
     }
@@ -65,10 +65,29 @@ def gen_agent_config(
     exps = generate_combinations(settings)
 
     encodings = []
+    agents_dict = {
+        "gpt": "${system.gpt}",
+        "palm": "${system.palm}",
+        "mixtral": "${system.gpt}",
+    }
+
+    engine_dict = {
+        "gpt": "gpt-3.5-turbo-0613",
+        "palm": "text-bison@001",
+        "mixtral": "mixtral-8x7b-instruct",
+    }
+
+    cost = {
+        "gpt": {"prompt": 0.001, "response": 0.002},
+        "palm": {"prompt": 0.0005, "response": 0.0005},
+        "mixtral": {"prompt": 0.0006, "response": 0.0006},
+    }
+
     for exp in exps:
         prompt = "${system.agent_prompts." + exp["prompt"] + "}"
-        agent = "${system.gpt}" if exp["use_gpt"] else "${system.palm}"
-        base_agent = [agent, {"prompt": prompt}]
+        base_agent = [agents_dict[agent_type], {"prompt": prompt}, {"engine": engine_dict[agent_type]},
+                        {"cost_per_prompt_token": cost[agent_type]["prompt"]},
+                        {"cost_per_response_token": cost[agent_type]["response"]}]
 
         if is_es:
             base_agent.append({"sampling": {"temperature": 0.7, "top_p": 0.5}})

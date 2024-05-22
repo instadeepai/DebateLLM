@@ -1,5 +1,6 @@
 defaults:
   - gpt
+  - palm
   - debate_prompts: medprompt
 _target_: debatellm.systems.Medprompt
 num_reasoning_steps: 5
@@ -12,7 +13,7 @@ name: medprompt
 agents: # options: [gpt, palm]
   # GPT-3 agent
   - - "${system.gpt}"
-    - engine: "gpt-4" # gpt uses gpt-4 engine
+    - engine: "gpt-3.5-turbo-0613" # gpt uses gpt-4 engine
     - cost_per_prompt_token: 0.03  # dollar costs per 1000 prompt token
     - cost_per_response_token: 0.06  # dollar costs per 1000 response token
     - prompt: "${system.agent_prompts.cot_medprompt}"

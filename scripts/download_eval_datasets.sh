@@ -21,3 +21,6 @@ scripts/eval_datasets/download_cosmosqa.sh
 
 # download gpqa dataset
 scripts/eval_datasets/download_gpqa.sh
+
+# download chess dataset
+scripts/eval_datasets/download_chess.sh

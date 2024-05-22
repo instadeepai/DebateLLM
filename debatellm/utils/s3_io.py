@@ -225,6 +225,12 @@ class FileHandler:
                     data.append(json.loads(line))
         return data
 
+    def read_json_file(self, path: str) -> Dict:
+        full_path = os.path.join(self.bucket_path, path)
+        with open(full_path, "r") as file:
+            data = json.load(file)
+        return data
+
     def save_json(self, path: str, data: Dict) -> None:
         """Wrapper around the python json save method
 

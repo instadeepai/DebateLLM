@@ -528,3 +528,87 @@ def gpqa_questions(
         return question
 
     return questions, format_question
+
+
+# flake8: noqa: C901
+def chess_questions(
+    file_handler: FileHandler,
+    dataset_settings: Dict,
+    seed: Optional[int] = 42,
+) -> Tuple[list, Callable]:
+    """Load MedMCQA dataset and question format function.
+
+    Args:
+        file_handler: file handler for s3 or local files.
+        dataset_settings : dictionary containing the file
+        name of the exam to evaluate on.
+
+    Returns:
+        questions : list of questions.
+        format_question : function to format question correctly.
+    """
+
+    # Fix the random seed to ensure fair comparison and reproducibility
+    random.seed(seed)  # Set the seed to a fixed value
+
+    exam_type = dataset_settings["exam_type"]
+    assert exam_type == "short"
+
+    data_path = f"task.json"
+    json_obj = file_handler.read_json_file(path=data_path)
+
+    all_targets = [" ".join(example["target"]) for example in json_obj["examples"]]
+
+    questions = []
+    for i, q in enumerate(json_obj["examples"]):
+        q_text = (
+            "For the following (in-progress) chess games, please select the option that shows all the legal distination squares that completes the notation: "
+            + q["input"]
+        )
+        correct_answer = " ".join(q["target"])
+
+        # Generate distractors from other example targets
+        distractors = [ans for idx, ans in enumerate(all_targets) if idx != i]
+
+        unique_distractors_found = False
+        # Loop until we find three unique distractors that are not the correct answer
+        while not unique_distractors_found:
+            random.shuffle(distractors)  # Shuffle distractors to randomize selection
+            selected_distractors = distractors[
+                :3
+            ]  # Select first three shuffled as distractors
+            unique_distractors_found = all(
+                [distractor != correct_answer for distractor in selected_distractors]
+            )
+
+        options = [correct_answer] + selected_distractors
+        random.shuffle(options)  # Shuffle options to prevent predictable positions
+
+        # Identify the correct solution after shuffling
+        solution_index = options.index(correct_answer)
+        solution = chr(
+            65 + solution_index
+        )  # Map index to A, B, C, D for multiple choice
+
+        question = {
+            "no": i,
+            "question": q_text,
+            "options": {chr(65 + j): opt for j, opt in enumerate(options)},
+            "solution": solution,
+            "subcategory": "Chess Moves",
+            "category": "Game Analysis",
+        }
+
+        questions.append(question)
+
+    def format_question(d: dict) -> str:
+        question = ""
+        options = d["options"]
+        for key in ["category", "subcategory", "question"]:
+            if d[key]:
+                question += f"\n{key}: {d[key]}"
+        for k, v in options.items():
+            question += f"\n{k}: {v}"
+        return question
+
+    return questions, format_question

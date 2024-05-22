@@ -1,5 +1,6 @@
 defaults:
   - gpt
+  - palm
   - debate_prompts: google_ma_debate
 
 _target_: debatellm.systems.MultiAgentDebateGoogle
@@ -13,18 +14,18 @@ agreement_intensity: -1 # -1 for default behavior, otherwise {0, ..., 10} for ag
 agents: # options: [gpt, palm]
   # GPT-3.5 agent
   - - "${system.gpt}"
-    - engine: "gpt-4" # gpt uses gpt-3.5 engine
+    - engine: "gpt-3.5-turbo-0613" # gpt uses gpt-3.5 engine
     - prompt: "${system.agent_prompts.simple}"
     - few_shot_examples: ${system.medpalm_examples.few_shot} # None, ${system.medpalm_examples.few_shot} or ${system.medpalm_examples.cot_few_shot}
 
   # GPT-3.5 agent
   - - "${system.gpt}"
-    - engine: "gpt-4" # gpt uses gpt-3.5 engine
+    - engine: "gpt-3.5-turbo-0613" # gpt uses gpt-3.5 engine
     - prompt: "${system.agent_prompts.simple}"
     - few_shot_examples: ${system.medpalm_examples.few_shot} # None, ${system.medpalm_examples.few_shot} or ${system.medpalm_examples.cot_few_shot}
 
   # GPT-3.5 agent
   - - "${system.gpt}"
-    - engine: "gpt-4" # gpt uses gpt-3.5 engine
+    - engine: "gpt-3.5-turbo-0613" # gpt uses gpt-3.5 engine
     - prompt: "${system.agent_prompts.simple}"
     - few_shot_examples: ${system.medpalm_examples.few_shot} # None, ${system.medpalm_examples.few_shot} or ${system.medpalm_examples.cot_few_shot}

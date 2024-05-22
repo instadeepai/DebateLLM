@@ -10,5 +10,5 @@ name: spp_synergy # Used for distinguishing between single agent GPT.
 agents: # options: [gpt, palm]
   # Agent 1
   - - "${system.gpt}"
-    - engine: "gpt-4" # gpt uses gpt-3.5 engine
+    - engine: "gpt-3.5-turbo-0613" # gpt uses gpt-3.5 engine
     - prompt: "${system.agent_prompts.spp_original}" # options: [spp_expert, spp_original]

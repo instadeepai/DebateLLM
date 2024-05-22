@@ -14,6 +14,7 @@
 
 import abc
 import datetime
+import logging
 import time
 from importlib import import_module
 from typing import Any, Callable, Dict, Optional, Tuple
@@ -22,6 +23,7 @@ import google
 import numpy as np
 import openai
 import vertexai
+from openai import OpenAI
 from vertexai.preview.language_models import (
     ChatModel,
     InputOutputTextPair,
@@ -37,6 +39,9 @@ from debatellm.utils.debate import (
 from debatellm.utils.gcloud import load_gcloud_credentials
 from debatellm.utils.openai import load_openai_api_key
 
+# Set the logging level for 'httpx' to 'WARNING' to suppress info and debug messages
+logging.getLogger("httpx").setLevel(logging.WARNING)
+
 
 # Try except decorator
 def try_except_decorator(func: Callable) -> Callable:
@@ -48,18 +53,20 @@ def try_except_decorator(func: Callable) -> Callable:
             except (
                 google.api_core.exceptions.InternalServerError,
                 google.api_core.exceptions.ResourceExhausted,
-                openai.error.RateLimitError,
-                openai.error.ServiceUnavailableError,
-                openai.error.APIError,
-                openai.error.Timeout,
-                openai.error.APIConnectionError,
-                openai.error.InvalidRequestError,
+                openai.RateLimitError,
+                # openai.ServiceUnavailableError,
+                openai.APIError,
+                openai.APIResponseValidationError,
+                # openai.Timeout,
+                # openai.APIConnectionError,
+                # openai.OpenAIError,
+                # openai.InvalidRequestError,
             ) as e:
                 print("API error occurred:", str(e), ". Retrying in 1 second...")
 
                 # If the error is not an invalid request error, then wait for 1 second;
                 # otherwise, increment the history counter to discard the oldest message.
-                if type(e) == openai.error.InvalidRequestError:
+                if type(e) == openai.APIResponseValidationError:
                     history_counter += 1
                 else:
                     time.sleep(1)
@@ -211,6 +218,7 @@ class GPT(BaseAgent):
             "gpt-4": 0.03,
             "gpt-4-1106-preview": 0.01,
             "gpt-4-32k": 0.06,
+            "mixtral-8x7b-instruct": 0.0006,
         }
 
         cost_per_response_token_dict = {
@@ -219,6 +227,7 @@ class GPT(BaseAgent):
             "gpt-4": 0.06,
             "gpt-4-1106-preview": 0.03,
             "gpt-4-32k": 0.12,
+            "mixtral-8x7b-instruct": 0.0006,
         }
 
         assert (
@@ -230,7 +239,15 @@ class GPT(BaseAgent):
 
         self._mock = mock
         if not self._mock:
-            openai.api_key = load_openai_api_key()
+
+            if engine == "mixtral-8x7b-instruct":
+                openai.api_key = api_key = load_openai_api_key(path="pplx_api_key.txt")
+                self._client = OpenAI(
+                    api_key=api_key, base_url="https://api.perplexity.ai"
+                )
+            else:
+                openai.api_key = api_key = load_openai_api_key()
+                self._client = OpenAI(api_key=api_key)
         self._engine = engine
 
         if sampling is None:
@@ -280,10 +297,16 @@ class GPT(BaseAgent):
                     if "agent_role" in self._prompt
                     else "assistant"
                 )
+
+                mode=self._prompt_from_history
+                # Mixtral only works with alternative (e.g. user, assistant, user, .. chats.
+                if self._engine == "mixtral-8x7b-instruct":
+                    mode = "one_prompt"
+
                 prompts_from_history = construct_message_from_history(
                     message_history,
                     agent_role,
-                    mode=self._prompt_from_history,
+                    mode=mode,
                 )
                 messages.extend(prompts_from_history)
 
@@ -309,33 +332,41 @@ class GPT(BaseAgent):
                 "gpt-3.5-turbo-0613",
                 "gpt-4-1106-preview",
                 "gpt-4-32k",
+                "mixtral-8x7b-instruct",
             ]
 
-            response = openai.ChatCompletion.create(
+            response = self._client.chat.completions.create(
                 model=self._engine,
-                messages=remove_spaces_in_name(messages),
+                messages=remove_spaces_in_name(messages),  # type: ignore
                 **self._sampling,
             )
 
             prompt_cost = (
-                np.ceil(response["usage"]["prompt_tokens"] / 1000)
+                np.ceil(response.usage.prompt_tokens / 1000)  # type: ignore
                 * self._cost_per_prompt_token
             )
             response_cost = (
-                np.ceil(response["usage"]["completion_tokens"] / 1000)
+                np.ceil(response.usage.completion_tokens / 1000)  # type: ignore
                 * self._cost_per_response_token
             )
             usage_info = {
-                "prompt_tokens": int(response["usage"]["prompt_tokens"]),
-                "response_tokens": int(response["usage"]["completion_tokens"]),
+                "prompt_tokens": int(response.usage.prompt_tokens),  # type: ignore
+                "response_tokens": int(response.usage.completion_tokens),  # type: ignore
                 "cost": prompt_cost + response_cost,
                 "num_messages_removed": history_counter,
             }
-            response = response["choices"][0]["message"]["content"]  # type: ignore
+            response = response.choices[0].message.content  # type: ignore
+
+            # If the response is to large, we cut off the start of the response
+            # until the response is small enough.
+            max_response_length = 512
+            if len(str(response)) > max_response_length:
+                response = str(response)[-max_response_length:]
+
         else:
-            response = "This is a mock output."
-            usage_info = {"prompt_tokens": 0, "response_tokens": 0, "cost": 0}
-        return response, usage_info
+            response = "This is a mock output."  # type: ignore
+            usage_info = {"prompt_tokens": 0, "response_tokens": 0, "cost": 0}  # type: ignore
+        return str(response), usage_info
 
 
 class PaLM(BaseAgent):
