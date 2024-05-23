@@ -64,7 +64,7 @@ sparse_legend = True
 # Initialize Neptune
 API_TOKEN = os.environ["TM_NEPTUNE_API_TOKEN"]
 project = neptune.init_project(
-    project="Anon/debatellm",
+    project="InstaDeep/truemed",
     mode="read-only",
 )
 
@@ -131,20 +131,29 @@ if chart_type == "spider" and False:
 
 runs_table_df = project.fetch_runs_table(id=full_run_ids).to_pandas()
 
+
+
 # Set the index based on the custom names
 runs_table_df = runs_table_df.set_index("sys/id")
 
+
 # Filter out all runs not initiated by k.tessara
-runs_table_df = runs_table_df[runs_table_df["sys/owner"].isin(["anon", "anon"])]
+runs_table_df = runs_table_df[runs_table_df["sys/owner"].isin(["k.tessera", "ap.smit"])]
+
+
 
 # Filter out all runs that where less than 80% completed
 runs_table_df = runs_table_df[runs_table_df["eval/percent_complete"] == 100.0]
+
+
 
 # There must be at least 40 questions answered
 runs_table_df = runs_table_df[runs_table_df["eval/score/total_count"] >= 15]
 
 if chart_type != "spider":
     runs_table_df = filter_results_for_paper(runs_table_df, dataset)
+
+
 
 # Filter out all runs that are not from the current dataset
 if dataset != "all":
@@ -160,6 +169,9 @@ runs_table_df = runs_table_df[
 for key in runs_table_df.keys():
     if "few_shot" in key:
         print(key)
+
+
+
 
 if chart_type == "bar":
     raise NotImplementedError("Bar charts are not implemented yet")
@@ -180,7 +192,7 @@ elif chart_type == "spider":
         ~(
             (
                 runs_table_df["config/system/_target_"]
-                == "debatellm.systems.MultiAgentDebateTsinghua"
+                == "truemed.systems.MultiAgentDebateTsinghua"
             )
             & (runs_table_df["config/system/agreement_intensity"] >= 0)
         )
@@ -189,14 +201,14 @@ elif chart_type == "spider":
     # Multi_Persona
     mp_run_table_df = runs_table_df[
         runs_table_df["config/system/_target_"]
-        == "debatellm.systems.MultiAgentDebateTsinghua"
+        == "truemed.systems.MultiAgentDebateTsinghua"
     ]
     # Filter to only take the top 3 runs
     mp_run_table_df = mp_run_table_df.nlargest(3, "eval/score/total_acc")
 
     # ChatEval
     ce_run_table_df = runs_table_df[
-        runs_table_df["config/system/_target_"] == "debatellm.systems.ChatEvalDebate"
+        runs_table_df["config/system/_target_"] == "truemed.systems.ChatEvalDebate"
     ]
 
     # Filter to only take the top 3 runs
@@ -205,7 +217,7 @@ elif chart_type == "spider":
     # Society of Mind
     som_run_table_df = runs_table_df[
         runs_table_df["config/system/_target_"]
-        == "debatellm.systems.MultiAgentDebateGoogle"
+        == "truemed.systems.MultiAgentDebateGoogle"
     ]
     # Filter to only take the top 3 runs
     som_run_table_df = som_run_table_df.nlargest(3, "eval/score/total_acc")

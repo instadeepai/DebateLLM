@@ -45,8 +45,10 @@ for METRIC in METRICS:
 
     LEGEND = True  # whether to show the legend or not
 
-    run_table = get_dataset_runs(RUN_RANGE, DATASET.lower())
+    assert len(RUN_RANGE) == 1, "Please provide the correct range for the dataset"
+
+    run_table = get_dataset_runs(RUN_RANGE[0], DATASET.lower())
 
     print(f"Number of runs: {len(run_table)}")
 
-    get_scatter_plot(METRIC, run_table, LEGEND, DATASET, save_path=SAVE_PATH)
+    get_scatter_plot(METRIC+" Log Scale", run_table, LEGEND, DATASET, save_path=SAVE_PATH)

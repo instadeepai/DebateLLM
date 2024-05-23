@@ -116,13 +116,13 @@ def latexify(fig_width=7, fig_height=5, columns=1):
 latexify()
 
 name_mapping = {
-    "debatellm.systems.ChatEvalDebate": "ChatEval",
-    "debatellm.systems.EnsembleRefinementDebate": "Ensemble Refinement",
-    "debatellm.systems.MultiAgentDebateGoogle": "Society of Mind",
-    "debatellm.systems.MultiAgentDebateTsinghua": "Multi-Persona",
-    "debatellm.systems.SingleAgentQA": "Single Agent",
-    "debatellm.systems.SelfConsistency": "Self-Consistency",
-    "debatellm.systems.Medprompt": "Medprompt",
+    "truemed.systems.ChatEvalDebate": "ChatEval",
+    "truemed.systems.EnsembleRefinementDebate": "Ensemble Refinement",
+    "truemed.systems.MultiAgentDebateGoogle": "Society of Mind",
+    "truemed.systems.MultiAgentDebateTsinghua": "Multi-Persona",
+    "truemed.systems.SingleAgentQA": "Single Agent",
+    "truemed.systems.SelfConsistency": "Self-Consistency",
+    "truemed.systems.Medprompt": "Medprompt",
 }
 
 marker_dict = {
@@ -416,7 +416,7 @@ def generate_scatter_chart(
     # If the number of aggregations steps is 0, then the system is a single agent
     aggr_name = "config/system/num_aggregation_steps"
     data["config/system/_target_"] = data.apply(
-        lambda row: "debatellm.systems.SingleAgentQA"
+        lambda row: "truemed.systems.SingleAgentQA"
         if aggr_name in row and row[aggr_name] == 0
         else row["config/system/_target_"],
         axis=1,
@@ -546,6 +546,7 @@ def filter_results_for_paper(runs_table_df, dataset):
         runs_table_df["config/system/agents/Agent_0/engine"] != "chat-bison@001"
     ]
 
+   
     # Filter out GPT-4
     # runs_table_df = runs_table_df[
     #     runs_table_df["config/system/agents/Agent_0/engine"] != "gpt-4"
@@ -553,10 +554,18 @@ def filter_results_for_paper(runs_table_df, dataset):
 
     # Filter out Multi-Persona agreement intensities greater than 0
     # Filter out runs where 'ai' is greater than -1, ignoring NaN values
+    
     runs_table_df = runs_table_df[
-        (runs_table_df["config/system/agreement_intensity"] <= -1)
-        | runs_table_df["config/system/agreement_intensity"].isna()
+        (runs_table_df["config/system/agreement_intensity"] == 9)
+        | (runs_table_df["config/system/_target_"] != "truemed.systems.MultiAgentDebateTsinghua")
     ]
+
+
+
+    # runs_table_df = runs_table_df[
+    #     (runs_table_df["config/system/agreement_intensity"] == 9)
+    #     | runs_table_df["config/system/agreement_intensity"].isna()
+    # ]
 
     # Filter out duplicates
     # Create a mask for rows with agreement_intensity of -1 and max_num_rounds of 3
@@ -599,7 +608,7 @@ def get_dataset_runs(run_range: List[int], dataset: str = None, engine: str = No
 
     api_token = os.environ["TM_NEPTUNE_API_TOKEN"]
     project = neptune.init_project(
-        project="Anon/debatellm",
+        project="InstaDeep/truemed",
         api_token=api_token,
         mode="read-only",
     )
@@ -622,7 +631,7 @@ def get_dataset_runs(run_range: List[int], dataset: str = None, engine: str = No
 
     # Filter out all runs not initiated by k.tessara or anon
     # runs_table_df = runs_table_df[runs_table_df["sys/owner"] == "anon"]
-    runs_table_df = runs_table_df[runs_table_df["sys/owner"].isin(["anon", "anon"])]
+    runs_table_df = runs_table_df[runs_table_df["sys/owner"].isin(["k.tessera", "ap.smit"])]
 
     # Filter out all runs that where less than 80% completed
     # runs_table_df = runs_table_df[runs_table_df["eval/percent_complete"] >= 40.0]
@@ -633,11 +642,12 @@ def get_dataset_runs(run_range: List[int], dataset: str = None, engine: str = No
         runs_table_df["config/max_eval_count"], errors="coerce"
     )
     condition = pd.isna(runs_table_df["config/max_eval_count"]) | (
-        runs_table_df["config/max_eval_count"] > 20
+        runs_table_df["config/max_eval_count"] > 15
     )
     runs_table_df = runs_table_df[condition]
 
     runs_table_df = filter_results_for_paper(runs_table_df, dataset)
+
 
     if dataset is not None:
         # Filter out all runs that are not from the current dataset
@@ -658,18 +668,20 @@ def get_dataset_runs(run_range: List[int], dataset: str = None, engine: str = No
     ]
 
     name_mapping = {
-        "debatellm.systems.ChatEvalDebate": "ChatEval",
-        "debatellm.systems.EnsembleRefinementDebate": "Ensemble Refinement",
-        "debatellm.systems.MultiAgentDebateGoogle": "Society of Mind",
-        "debatellm.systems.MultiAgentDebateTsinghua": "Multi-Persona",
-        "debatellm.systems.SingleAgentQA": "Single Agent",
-        "debatellm.systems.Medprompt": "Medprompt",
+        "truemed.systems.ChatEvalDebate": "ChatEval",
+        "truemed.systems.EnsembleRefinementDebate": "Ensemble Refinement",
+        "truemed.systems.MultiAgentDebateGoogle": "Society of Mind",
+        "truemed.systems.MultiAgentDebateTsinghua": "Multi-Persona",
+        "truemed.systems.SingleAgentQA": "Single Agent",
+        "truemed.systems.Medprompt": "Medprompt",
     }
 
     runs_table_df = runs_table_df[runs_table_df["config/system/_target_"].notna()]
     runs_table_df["system_name"] = runs_table_df["config/system/_target_"].apply(
         lambda x: name_mapping.get(x, x)
     )
+
+
 
     create_num_rounds_column(runs_table_df)
     create_num_agents_column(runs_table_df)
@@ -728,7 +740,7 @@ def get_scatter_plot(metrics, runs_table_df, legend=True, dataset="", save_path=
         plt.figure(figsize=(8.2, 4))
     else:
         plt.figure(figsize=(6, 4))
-
+    
     sns.scatterplot(
         x=key,
         y="eval/score/total_acc",
@@ -762,7 +774,7 @@ def generate_line_chart_with_error_bar(
 ):
     # Filter out all runs that does not have the correct system name
     runs_table_df = runs_table_df[
-        runs_table_df["config/system/_target_"] == f"debatellm.systems.{system_name}"
+        runs_table_df["config/system/_target_"] == f"truemed.systems.{system_name}"
     ]
 
     if system_name == "EnsembleRefinementDebate":
@@ -832,7 +844,7 @@ def generate_line_chart(
     plt.figure(figsize=(10, 6))
 
     for system_name in system_names:
-        full_name = f"debatellm.systems.{system_name}"
+        full_name = f"truemed.systems.{system_name}"
 
         # Filter by system name
         filtered_df = runs_table_df[
@@ -859,12 +871,12 @@ def update_self_consistency_names(runs_table_df, name_mapping=None):
     # If the number of aggregations steps is 0 and reasoning steps is 1,
     # then we consider it a single agent protocol.
 
-    single_agent_name = "debatellm.systems.SingleAgentQA"
+    single_agent_name = "truemed.systems.SingleAgentQA"
     single_agent_name = (
         single_agent_name if name_mapping is None else name_mapping[single_agent_name]
     )
 
-    self_consistency_name = "debatellm.systems.SelfConsistency"
+    self_consistency_name = "truemed.systems.SelfConsistency"
     self_consistency_name = (
         self_consistency_name
         if name_mapping is None
