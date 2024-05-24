@@ -51,4 +51,4 @@ for METRIC in METRICS:
 
     print(f"Number of runs: {len(run_table)}")
 
-    get_scatter_plot(METRIC+" Log Scale", run_table, LEGEND, DATASET, save_path=SAVE_PATH)
+    get_scatter_plot(METRIC, run_table, LEGEND, DATASET, save_path=SAVE_PATH)

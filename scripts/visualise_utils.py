@@ -753,7 +753,7 @@ def get_scatter_plot(metrics, runs_table_df, legend=True, dataset="", save_path=
         data=runs_table_df_plot,
     )
     plt.xscale("log")
-    plt.xlabel(f"{metrics}")
+    plt.xlabel(f"{metrics} (Log Scale)")
     plt.ylabel(f"{dataset} Accuracy (out of 1.0)")
     if legend:
         plt.legend(bbox_to_anchor=(1.05, 1), loc="upper left")
