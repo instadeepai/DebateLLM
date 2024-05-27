@@ -143,7 +143,7 @@ runs_table_df = runs_table_df[runs_table_df["sys/owner"].isin(["k.tessera", "ap.
 
 
 # Filter out all runs that where less than 80% completed
-runs_table_df = runs_table_df[runs_table_df["eval/percent_complete"] == 100.0]
+runs_table_df = runs_table_df[runs_table_df["eval/percent_complete"] >= 100.0]
 
 
 
@@ -169,9 +169,6 @@ runs_table_df = runs_table_df[
 for key in runs_table_df.keys():
     if "few_shot" in key:
         print(key)
-
-
-
 
 if chart_type == "bar":
     raise NotImplementedError("Bar charts are not implemented yet")
@@ -379,6 +376,7 @@ elif chart_type == "config_table":
         "cosmosqa": [],
         "ciar": [],
         "gpqa": [],
+        "chess": [],
     }
     datasets = results.keys()
     for unique_id in runs_table_df.index:

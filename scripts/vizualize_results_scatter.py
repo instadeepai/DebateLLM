@@ -27,8 +27,9 @@
 # limitations under the License.
 
 from visualise_utils import get_dataset_runs, get_paper_dataset_ranges, get_scatter_plot
+import pandas as pd
 
-DATASET = "MedQA"  # MedQA, USMLE, PubMedQA, MMLU, CosmosQA, Ciar, GPQA,
+DATASET = "MedQA"  # MedQA, USMLE, PubMedQA, MMLU, CosmosQA, Ciar, GPQA, Chess
 # RUN_RANGE = [3904, 4058]
 
 # Hardcode the ranges based on the names
@@ -44,10 +45,14 @@ for METRIC in METRICS:
     SAVE_PATH = f"./data/charts/{DATASET}_{METRIC}_scatter_plots.pdf"  # None if you don't want to
 
     LEGEND = True  # whether to show the legend or not
+    
+    run_table = None
 
-    assert len(RUN_RANGE) == 1, "Please provide the correct range for the dataset"
-
-    run_table = get_dataset_runs(RUN_RANGE[0], DATASET.lower())
+    for run_range in RUN_RANGE:
+        if run_table is None:
+            run_table = get_dataset_runs(run_range, DATASET.lower())
+        else:
+            run_table = pd.concat([run_table, get_dataset_runs(run_range, DATASET.lower())], ignore_index=True)
 
     print(f"Number of runs: {len(run_table)}")
 
